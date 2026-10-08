@@ -22,7 +22,6 @@
       background-size: cover; z-index: -1; transition: filter 0.8s ease;
     }
     
-    /* Mobile Background Adjustment to keep face visible */
     @media (max-width: 640px) {
       .bg-wallpaper {
         background-position: 75% center; 
@@ -99,7 +98,6 @@
   <section id="registration" class="min-h-screen py-24 px-4 flex flex-col items-center">
     <div class="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl">
       
-      <!-- FORM CONTAINER -->
       <div id="formContainer">
         <header class="py-16 text-center">
           <h2 class="stylish-heading text-4xl font-bold">Register Presence</h2>
@@ -108,6 +106,7 @@
 
         <div class="px-6 pb-12 sm:px-12">
           <form id="regForm">
+            <!-- Primary Member -->
             <div class="form-card main-member shadow-lg">
               <h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">
                 <span class="bg-[#b08d57] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg">1</span> 
@@ -122,7 +121,7 @@
                       <option value="">-- Choose --</option>
                       <option value="Ankleshwar">Ankleshwar</option>
                       <option value="Bharuch">Bharuch</option>
-                      <option value="Vapi">Vapi</option>
+                      <option value="Valia">Valia</option>
                     </select>
                   </div>
                   <div>
@@ -130,7 +129,8 @@
                     <input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="10 Digit Number">
                   </div>
                 </div>
-                <div><label class="text-[11px] font-black text-slate-400 uppercase">Age (18-35 only)</label><input type="number" name="age" required min="18" max="35" class="input-field" placeholder="18-35"></div>
+                <!-- Age updated to 18 and above -->
+                <div><label class="text-[11px] font-black text-slate-400 uppercase">Age (18 and above)</label><input type="number" name="age" required min="18" class="input-field" placeholder="Enter Age"></div>
                 <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Address</label><textarea name="address" required rows="3" class="input-field" placeholder="Complete Address"></textarea></div>
               </div>
             </div>
@@ -160,7 +160,7 @@
         </button>
       </div>
 
-      <!-- FOOTER / CONTACT -->
+      <!-- FOOTER -->
       <footer class="bg-black/60 p-10 sm:p-16 border-t border-white/5 text-center">
         <div class="max-w-xs mx-auto">
             <h4 class="text-gold font-black mb-6 tracking-[0.2em] text-sm uppercase">Contact Details</h4>
@@ -183,13 +183,12 @@
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxdB_0qKOhSRKS2Cn_e8yQigsOF2cJe6_jrcVCMnpZv-vXa0ztIUpLZcqgxiF9p5qx0/exec";
 
-    // Scroll Blur
     window.addEventListener('scroll', () => {
       const bg = document.getElementById('mainBg');
       window.scrollY > 150 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
     });
 
-    // Add Member
+    // Add Family Member Logic
     let count = 1;
     document.getElementById('addBtn').onclick = () => {
       count++;
@@ -205,10 +204,15 @@
           <div class="space-y-5">
             <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Name"></div>
             <div class="grid grid-cols-2 gap-4">
-                <div><label class="text-[11px] font-black text-slate-400 uppercase">City</label><select name="city" required class="input-field"><option value="Ankleshwar">Ankleshwar</option><option value="Bharuch">Bharuch</option><option value="Vapi">Vapi</option></select></div>
+                <div><label class="text-[11px] font-black text-slate-400 uppercase">City</label>
+                <select name="city" required class="input-field">
+                    <option value="Ankleshwar">Ankleshwar</option>
+                    <option value="Bharuch">Bharuch</option>
+                    <option value="Valia">Valia</option>
+                </select></div>
                 <div><label class="text-[11px] font-black text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="10 Digits"></div>
             </div>
-            <div><label class="text-[11px] font-black text-slate-400 uppercase">Age</label><input type="number" name="age" required min="18" max="35" class="input-field" placeholder="18-35"></div>
+            <div><label class="text-[11px] font-black text-slate-400 uppercase">Age (18 and above)</label><input type="number" name="age" required min="18" class="input-field" placeholder="Age"></div>
             <input type="hidden" name="address" value="SAME_AS_PRIMARY">
           </div>
         </div>`;
@@ -246,13 +250,11 @@
             body: JSON.stringify({ data: dataArray }) 
         });
         
-        // Switch to Success View
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
         window.scrollTo({ top: document.getElementById('registration').offsetTop - 50, behavior: 'smooth' });
         
       } catch (err) {
-        // Fallback in case of browser blocks
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
       }
