@@ -1,191 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Maiya ki Maya - with P.P. Gurumaa</title>
+<!-- ... Your existing HTML ... -->
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root { --gold: #b08d57; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: black; overflow-x: hidden; }
+<script>
+const WEB_APP_URL = "YOUR_DEPLOYED_URL_HERE";
+let memberCount = 1;
 
-    .bg-wallpaper {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1499244015948-ac75085284fb?q=80&w=2000') center center no-repeat;
-      background-size: cover; z-index: -1; transition: filter 0.8s ease;
-    }
-    .bg-wallpaper.blurred { filter: blur(15px) brightness(0.4); }
-
-    .landing-page { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-    .stylish-heading {
-      font-family: 'Cinzel', serif;
-      background: linear-gradient(to bottom, #ffffff, #b08d57);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center;
-    }
-
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2.5rem;
-    }
-    .form-card { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; }
-    
-    .input-field {
-      width: 100%; background: #f1f5f9; border: 1.5px solid #e2e8f0;
-      border-radius: 10px; padding: 12px; font-size: 16px; outline: none; margin-top: 5px;
-    }
-    .label-text { font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; }
-
-    .btn-gold {
-      background: linear-gradient(135deg, #b08d57, #8a6d3b); color: white;
-      font-weight: 800; transition: 0.3s; padding: 1rem 2.5rem; border-radius: 99px;
-    }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-
-    .contact-section { background: rgba(0,0,0,0.5); padding: 2rem; text-align: center; color: white; border-top: 1px solid rgba(255,255,255,0.1); }
-  </style>
-</head>
-<body>
-
-  <div id="mainBg" class="bg-wallpaper"></div>
-
-  <!-- LANDING PAGE -->
-  <section class="landing-page px-6">
-    <div class="absolute top-8 left-8">
-      <img src="logo.png" alt="Logo" class="h-14 w-auto">
-    </div>
-
-    <div class="text-center">
-      <h1 class="stylish-heading text-4xl sm:text-7xl font-black mb-4">
-        Maiya ki Maya<br><span class="text-2xl sm:text-4xl opacity-90">with P.P. Gurumaa</span>
-      </h1>
-      <p class="text-white/60 tracking-[0.4em] text-[10px] uppercase">Special Spiritual Discourse</p>
-    </div>
-
-    <div class="absolute bottom-12">
-      <a href="#registration" class="btn-gold animate-bounce">REGISTRATION <i class="fa-solid fa-arrow-down ml-2"></i></a>
-    </div>
-  </section>
-
-  <!-- FORM SECTION -->
-  <section id="registration" class="min-h-screen py-20 px-4 flex justify-center">
-    <div class="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl">
-      
-      <header class="py-12 text-center">
-        <h2 class="stylish-heading text-3xl font-bold">Register Your Presence</h2>
-      </header>
-
-      <div class="p-6 sm:p-10">
-        <form id="regForm">
-          <!-- Member 1 -->
-          <div class="form-card">
-            <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
-              <span class="bg-[#b08d57] text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span> 
-              Primary Member (Compulsory)
-            </h3>
-            
-            <div class="space-y-4">
-              <div><label class="label-text">Full Name</label><input type="text" id="name1" required class="input-field"></div>
-              <div>
+// Function to add more members
+document.getElementById('addBtn').addEventListener('click', () => {
+    memberCount++;
+    const html = `
+    <div class="form-card mt-4 border-t-2 border-dashed border-gray-200 pt-6">
+        <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span class="bg-gray-400 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">${memberCount}</span> 
+            Additional Member
+        </h3>
+        <div class="space-y-4">
+            <div><label class="label-text">Full Name</label><input type="text" required class="input-field name-field"></div>
+            <div>
                 <label class="label-text">Select City</label>
-                <select id="city1" required class="input-field">
-                  <option value="">-- Select City --</option>
-                  <option value="Ankleshwar">Ankleshwar</option>
-                  <option value="Bharuch">Bharuch</option>
-                  <option value="Vapi">Vapi</option>
+                <select required class="input-field city-field">
+                    <option value="Ankleshwar">Ankleshwar</option>
+                    <option value="Bharuch">Bharuch</option>
+                    <option value="Vapi">Vapi</option>
                 </select>
-              </div>
-              <div><label class="label-text">Mobile Number</label><input type="tel" id="mobile1" required pattern="[0-9]{10}" class="input-field"></div>
-              <div><label class="label-text">Age (18-35 only)</label><input type="number" id="age1" required min="18" max="35" class="input-field"></div>
-              <div><label class="label-text">Full Address</label><textarea id="address1" required rows="3" class="input-field"></textarea></div>
             </div>
-          </div>
-
-          <!-- Dynamic Members -->
-          <div id="additionalList"></div>
-
-          <button type="button" id="addBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl mb-6 font-bold text-xs">
-            <i class="fa-solid fa-plus mr-2"></i> ADD FAMILY MEMBER
-          </button>
-
-          <button type="submit" id="submitBtn" class="w-full btn-gold text-xl py-5 rounded-2xl">
-            SUBMIT REGISTRATION
-          </button>
-        </form>
-      </div>
-
-      <footer class="contact-section">
-        <h4 class="text-gold font-bold mb-4 tracking-widest">CONTACT DETAILS</h4>
-        <div class="space-y-2 text-sm opacity-80">
-          <p><i class="fa-solid fa-phone mr-2"></i> +91 98243 30246</p>
-          <p><i class="fa-solid fa-envelope mr-2"></i> dhyansthalinavsari@gmail.com</p>
+            <div><label class="label-text">Mobile Number</label><input type="tel" required pattern="[0-9]{10}" class="input-field mobile-field"></div>
+            <div><label class="label-text">Age (18-35)</label><input type="number" required min="18" max="35" class="input-field age-field"></div>
+            <input type="hidden" class="address-field" value="Same as Primary">
         </div>
-      </footer>
-    </div>
-  </section>
+    </div>`;
+    document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
+});
 
-  <script>
-    // PASTE YOUR GOOGLE SCRIPT URL BELOW
-    const WEB_APP_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+// Submit Logic
+document.getElementById('regForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const originalText = btn.innerText;
+    
+    btn.disabled = true; 
+    btn.innerText = "SAVING...";
 
-    // Background blur logic
-    window.addEventListener('scroll', () => {
-      const bg = document.getElementById('mainBg');
-      window.scrollY > 200 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
-    });
-
-    // Add Member logic
-    let count = 1;
-    document.getElementById('addBtn').onclick = () => {
-      count++;
-      const html = `
-        <div class="form-card relative">
-          <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-slate-300"><i class="fa-solid fa-circle-xmark text-xl"></i></button>
-          <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">Member ${count}</h3>
-          <div class="space-y-4">
-            <div><label class="label-text">Full Name</label><input type="text" required class="input-field"></div>
-            <div><label class="label-text">Select City</label><select required class="input-field"><option value="Ankleshwar">Ankleshwar</option><option value="Bharuch">Bharuch</option><option value="Vapi">Vapi</option></select></div>
-            <div><label class="label-text">Mobile</label><input type="tel" required pattern="[0-9]{10}" class="input-field"></div>
-            <div><label class="label-text">Age (18-35)</label><input type="number" required min="18" max="35" class="input-field"></div>
-            <div><label class="label-text">Address</label><textarea required rows="2" class="input-field"></textarea></div>
-          </div>
-        </div>`;
-      document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
-    };
-
-    // Submit Logic
-    document.getElementById('regForm').onsubmit = async (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true; btn.innerText = "SAVING...";
-
-      const data = [];
-      data.push({
+    const data = [];
+    
+    // 1. Get Primary Member
+    data.push({
         name: document.getElementById('name1').value,
         city: document.getElementById('city1').value,
         mobile: document.getElementById('mobile1').value,
         age: document.getElementById('age1').value,
-        address: document.getElementById('address1').value
-      });
+        address: document.getElementById('address1').value,
+        type: "Primary"
+    });
 
-      document.querySelectorAll('#additionalList .form-card').forEach(card => {
-        const inps = card.querySelectorAll('input, select, textarea');
-        data.push({ name: inps[0].value, city: inps[1].value, mobile: inps[2].value, age: inps[3].value, address: inps[4].value });
-      });
+    // 2. Get Additional Members
+    document.querySelectorAll('#additionalList .form-card').forEach(card => {
+        data.push({
+            name: card.querySelector('.name-field').value,
+            city: card.querySelector('.city-field').value,
+            mobile: card.querySelector('.mobile-field').value,
+            age: card.querySelector('.age-field').value,
+            address: document.getElementById('address1').value, // Use primary address
+            type: "Family"
+        });
+    });
 
-      try {
-        await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ event: "Maiya ki Maya", data: data }) });
+    try {
+        // We use the 'no-cors' mode for Google Apps Script
+        await fetch(WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({ event: "Maiya ki Maya", data: data })
+        });
+        
+        // Since no-cors doesn't return a response, we assume success if no error is thrown
         alert("Registration Successful!");
         window.location.reload();
-      } catch (err) {
-        alert("Error saving data.");
-        btn.disabled = false; btn.innerText = "SUBMIT REGISTRATION";
-      }
-    };
-  </script>
-</body>
-</html>
+    } catch (err) {
+        console.error(err);
+        alert("Connection error. Please check your internet.");
+        btn.disabled = false; 
+        btn.innerText = originalText;
+    }
+};
+</script>
