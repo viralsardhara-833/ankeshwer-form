@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Maya ki Maya Guru Maa ke Sang | Himalayan Meditation</title>
+  <title>Maya ki Maya Guru Maa ke Sang | Registration</title>
 
   <!-- Tailwind CSS & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
       --gold-primary: #b08d57;
-      --deep-brown: #2d271e;
     }
 
     body { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2000&auto=format&fit=crop') center center no-repeat fixed;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1518005020250-675f3f51489a?q=80&w=2000&auto=format&fit=crop') center center no-repeat fixed;
       background-size: cover;
       margin: 0;
       padding: 0;
@@ -28,167 +27,158 @@
 
     .stylish-heading {
       font-family: 'Cinzel', serif;
-      background: linear-gradient(to bottom, #f3e5ab, #b08d57);
+      background: linear-gradient(to bottom, #ffffff, #b08d57);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.1;
-    }
-
-    .brand-text {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 3px;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.2;
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.08); 
-      backdrop-filter: blur(30px); 
-      -webkit-backdrop-filter: blur(30px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
+      background: rgba(255, 255, 255, 0.05); 
+      backdrop-filter: blur(20px); 
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .form-card {
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
     }
 
     .input-field {
       width: 100%;
-      background: #f1f5f9;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      padding: 14px 16px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
       outline: none;
-      transition: all 0.3s ease;
-      font-weight: 500;
+      transition: all 0.2s;
     }
 
     .input-field:focus {
       border-color: var(--gold-primary);
-      background: white;
-      box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.1);
+      box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.1);
     }
 
     .label-text {
-      font-size: 11px;
-      font-weight: 800;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #475569;
-      margin-bottom: 8px;
+      color: #64748b;
+      margin-bottom: 4px;
       display: block;
     }
 
-    .btn-gold {
-      background: linear-gradient(135deg, #b08d57 0%, #8a6d3b 100%);
+    .btn-submit {
+      background: linear-gradient(to right, #b08d57, #8a6d3b);
       color: white;
-      font-weight: 800;
-      letter-spacing: 2px;
-      transition: all 0.3s ease;
+      font-weight: 700;
+      transition: all 0.3s;
     }
 
-    .btn-gold:hover {
-      transform: translateY(-2px);
+    .btn-submit:hover {
       filter: brightness(1.1);
-      box-shadow: 0 15px 30px rgba(138, 109, 59, 0.4);
+      transform: translateY(-1px);
     }
 
-    .fade-in { animation: fadeIn 0.4s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    /* Animation */
+    .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body class="min-h-screen py-6 px-4 flex justify-center items-start">
+<body class="min-h-screen p-3 sm:p-6">
 
-  <div class="glass-panel w-full max-w-4xl rounded-[3.5rem] overflow-hidden">
+  <!-- TOP LOGO LEFT -->
+  <div class="max-w-[1400px] mx-auto mb-4">
+     <img src="logo.png" alt="Logo" class="h-12 sm:h-16 w-auto drop-shadow-md">
+  </div>
+
+  <div class="glass-panel w-full max-w-[1400px] mx-auto rounded-[2rem] overflow-hidden shadow-2xl">
     
-    <!-- BRAND TOP SECTION -->
-    <div class="pt-10 flex flex-col items-center gap-2">
-      <div class="flex items-center gap-3">
-        <img src="logo.png" alt="Himalayan Meditation" class="h-8 w-auto"> <!-- Update logo.png with your actual file path -->
-        <span class="brand-text font-bold">HIMALAYAN MEDITATION</span>
-      </div>
-    </div>
-
-    <!-- MAIN EVENT HEADING -->
-    <header class="pt-8 pb-10 px-6 text-center border-b border-white/5">
-      <h3 class="text-[#b08d57] tracking-[0.4em] text-[10px] mb-4 uppercase font-black">Sacred Discourse with Guru Maa</h3>
-      <h1 class="stylish-heading text-4xl sm:text-7xl font-black mb-4">
-        MAYA KI MAYA<br>GURU MAA KE SANG
+    <!-- EVENT HEADING -->
+    <header class="py-10 px-4 text-center">
+      <h1 class="stylish-heading text-3xl sm:text-6xl font-black mb-2">
+        MAYA KI MAYA GURU MAA KE SANG
       </h1>
-      <div class="h-1 w-20 bg-white/20 mx-auto mt-6 rounded-full"></div>
+      <p class="text-white/60 tracking-[0.3em] text-[10px] uppercase">Divine Discourse Registration</p>
     </header>
 
-    <main class="p-4 sm:p-10">
-      <form id="registrationForm" class="space-y-8">
+    <main class="p-4 sm:p-8">
+      <form id="registrationForm" class="space-y-4">
         
-        <!-- CITY SELECTION (Global or per member? Based on "mandatory for all", putting it inside member cards) -->
+        <!-- ROW HEADER FOR DESKTOP (Only visible on large screens) -->
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-6 mb-[-10px]">
+           <div class="col-span-3"><label class="label-text">Full Name</label></div>
+           <div class="col-span-2"><label class="label-text">City</label></div>
+           <div class="col-span-2"><label class="label-text">Mobile</label></div>
+           <div class="col-span-1"><label class="label-text">Age</label></div>
+           <div class="col-span-4"><label class="label-text">Full Address</label></div>
+        </div>
 
-        <!-- PRIMARY MEMBER (Mandatory) -->
-        <div class="form-card p-6 sm:p-10">
-          <div class="flex items-center gap-4 mb-8">
-            <span class="bg-[#2d271e] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-lg">1</span>
-            <h2 class="font-bold text-2xl text-stone-800 tracking-tight">Primary Participant</h2>
+        <!-- PRIMARY MEMBER -->
+        <div class="form-card p-4 sm:p-6">
+          <div class="flex items-center gap-2 mb-4 lg:hidden">
+            <span class="bg-stone-800 text-white text-xs px-2 py-1 rounded">1</span>
+            <h2 class="font-bold text-stone-800">Primary Member</h2>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="md:col-span-1">
-              <label class="label-text">Full Name</label>
-              <input type="text" id="name1" required placeholder="Name as per ID" class="input-field">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+            <!-- Name -->
+            <div class="lg:col-span-3">
+              <label class="label-text lg:hidden">Full Name</label>
+              <input type="text" id="name1" required placeholder="Full Name" class="input-field">
             </div>
-            
-            <div>
-              <label class="label-text">Select City</label>
+            <!-- City -->
+            <div class="lg:col-span-2">
+              <label class="label-text lg:hidden">City</label>
               <select id="city1" required class="input-field">
-                <option value="">-- Choose Location --</option>
+                <option value="">Select City</option>
                 <option value="Ankleshwar">Ankleshwar</option>
                 <option value="Bharuch">Bharuch</option>
                 <option value="Vapi">Vapi</option>
               </select>
             </div>
-
-            <div>
-              <label class="label-text">Mobile Number</label>
-              <input type="tel" id="mobile1" required placeholder="10-digit number" class="input-field">
+            <!-- Mobile -->
+            <div class="lg:col-span-2">
+              <label class="label-text lg:hidden">Mobile</label>
+              <input type="tel" id="mobile1" required pattern="[0-9]{10}" placeholder="10 Digit Number" class="input-field">
             </div>
-
-            <div>
-              <label class="label-text">Age (Mandatory: 18-35)</label>
-              <input type="number" id="age1" required min="18" max="35" placeholder="Enter age" class="input-field">
+            <!-- Age -->
+            <div class="lg:col-span-1">
+              <label class="label-text lg:hidden">Age</label>
+              <input type="number" id="age1" required min="18" max="35" placeholder="18-35" class="input-field">
             </div>
-
-            <div class="md:col-span-2">
-              <label class="label-text">Full Address</label>
-              <textarea id="address1" required rows="2" placeholder="Street name, landmark, and house number" class="input-field"></textarea>
+            <!-- Address -->
+            <div class="lg:col-span-4">
+              <label class="label-text lg:hidden">Full Address</label>
+              <input type="text" id="address1" required placeholder="House No, Area, Landmark" class="input-field">
             </div>
           </div>
         </div>
 
-        <!-- ADDITIONAL MEMBERS CONTAINER -->
-        <div id="additionalMembers" class="space-y-8"></div>
+        <!-- ADDITIONAL MEMBERS AREA -->
+        <div id="additionalMembers" class="space-y-4"></div>
 
-        <!-- ACTION BUTTONS -->
-        <div class="flex flex-col gap-4">
-          <button type="button" id="addMemberBtn" class="w-full py-5 border-2 border-dashed border-white/20 text-white rounded-2xl hover:bg-white/10 transition-all font-bold text-xs tracking-[0.2em]">
-            <i class="fa-solid fa-user-plus mr-2"></i> ADD ANOTHER MEMBER
+        <!-- FOOTER ACTIONS -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-6">
+          <button type="button" id="addMemberBtn" class="flex-1 py-4 border-2 border-dashed border-white/20 text-white rounded-xl hover:bg-white/10 transition-all font-bold text-xs tracking-widest">
+            <i class="fa-solid fa-plus mr-2"></i> ADD MEMBER
           </button>
 
-          <button type="submit" id="submitBtn" class="btn-gold w-full py-6 rounded-[2rem] text-xl shadow-2xl mt-4">
-            SUBMIT REGISTRATION <i class="fa-solid fa-paper-plane ml-2"></i>
+          <button type="submit" id="submitBtn" class="flex-1 py-4 btn-submit rounded-xl text-lg shadow-lg">
+            SUBMIT NOW <i class="fa-solid fa-check-circle ml-2"></i>
           </button>
         </div>
       </form>
     </main>
 
-    <footer class="pb-10 pt-4 text-center text-white/40 text-[9px] tracking-[0.3em] uppercase">
-      Dhyansthali Navsari | Samarpan Ashram Marg | Gujarat
+    <footer class="p-6 text-center border-t border-white/5">
+      <p class="text-white/30 text-[9px] tracking-widest uppercase">Dhyansthali Navsari | Himalayan Meditation</p>
     </footer>
   </div>
 
   <script>
-    // YOUR GOOGLE SCRIPT URL
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx11gkiVOS8G0imymHIQ3b-0VavqPRLQfwcurAyBnF2yAfDgUlnLHZKM7xyMUQh3Mpe/exec";
 
     let memberCount = 1;
@@ -198,41 +188,21 @@
     addBtn.onclick = () => {
       memberCount++;
       const div = document.createElement('div');
-      div.className = "form-card p-6 sm:p-10 fade-in relative";
+      div.className = "form-card p-4 sm:p-6 fade-in relative";
       div.innerHTML = `
-        <button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-stone-300 hover:text-red-500 transition-colors">
-          <i class="fa-solid fa-circle-xmark text-2xl"></i>
+        <button type="button" onclick="this.parentElement.remove()" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center shadow-lg">
+          <i class="fa-solid fa-xmark text-xs"></i>
         </button>
-        <div class="flex items-center gap-4 mb-8">
-          <span class="bg-stone-100 text-stone-400 w-10 h-10 rounded-full flex items-center justify-center font-bold">${memberCount}</span>
-          <h2 class="font-bold text-2xl text-stone-800 tracking-tight">Additional Participant</h2>
+        <div class="flex items-center gap-2 mb-4 lg:hidden">
+          <span class="bg-stone-400 text-white text-xs px-2 py-1 rounded">${memberCount}</span>
+          <h2 class="font-bold text-stone-800">Additional Member</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="label-text">Full Name</label>
-            <input type="text" required placeholder="Name" class="input-field">
-          </div>
-          <div>
-            <label class="label-text">Select City</label>
-            <select required class="input-field">
-                <option value="">-- Choose Location --</option>
-                <option value="Ankleshwar">Ankleshwar</option>
-                <option value="Bharuch">Bharuch</option>
-                <option value="Vapi">Vapi</option>
-            </select>
-          </div>
-          <div>
-            <label class="label-text">Mobile Number</label>
-            <input type="tel" required placeholder="Phone number" class="input-field">
-          </div>
-          <div>
-            <label class="label-text">Age (18-35)</label>
-            <input type="number" required min="18" max="35" placeholder="Age" class="input-field">
-          </div>
-          <div class="md:col-span-2">
-            <label class="label-text">Full Address</label>
-            <textarea required rows="2" placeholder="Address" class="input-field"></textarea>
-          </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+          <div class="lg:col-span-3"><label class="label-text lg:hidden">Full Name</label><input type="text" required placeholder="Full Name" class="input-field"></div>
+          <div class="lg:col-span-2"><label class="label-text lg:hidden">City</label><select required class="input-field"><option value="">Select City</option><option value="Ankleshwar">Ankleshwar</option><option value="Bharuch">Bharuch</option><option value="Vapi">Vapi</option></select></div>
+          <div class="lg:col-span-2"><label class="label-text lg:hidden">Mobile</label><input type="tel" required pattern="[0-9]{10}" placeholder="Mobile" class="input-field"></div>
+          <div class="lg:col-span-1"><label class="label-text lg:hidden">Age</label><input type="number" required min="18" max="35" placeholder="Age" class="input-field"></div>
+          <div class="lg:col-span-4"><label class="label-text lg:hidden">Full Address</label><input type="text" required placeholder="Address" class="input-field"></div>
         </div>
       `;
       container.appendChild(div);
@@ -240,34 +210,31 @@
 
     document.getElementById('registrationForm').onsubmit = async (e) => {
       e.preventDefault();
-      
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> PROCESSING...`;
+      btn.innerHTML = `PROCESSING...`;
 
-      const members = [];
+      const participants = [];
       
-      // Get Primary Member Data
-      members.push({
+      // Get Primary
+      participants.push({
         name: document.getElementById('name1').value,
         city: document.getElementById('city1').value,
         mobile: document.getElementById('mobile1').value,
         age: document.getElementById('age1').value,
-        address: document.getElementById('address1').value,
-        memberType: 'Primary'
+        address: document.getElementById('address1').value
       });
 
-      // Get Additional Member Data
+      // Get Secondary
       const extraCards = container.querySelectorAll('.form-card');
       extraCards.forEach(card => {
-        const inps = card.querySelectorAll('input, select, textarea');
-        members.push({
+        const inps = card.querySelectorAll('input, select');
+        participants.push({
           name: inps[0].value,
           city: inps[1].value,
           mobile: inps[2].value,
           age: inps[3].value,
-          address: inps[4].value,
-          memberType: 'Additional'
+          address: inps[4].value
         });
       });
 
@@ -275,19 +242,14 @@
         await fetch(SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          body: JSON.stringify({
-            event: "Maya ki Maya Guru Maa ke Sang",
-            timestamp: new Date().toISOString(),
-            participants: members
-          })
+          body: JSON.stringify({ event: "Maya ki Maya", data: participants })
         });
-        
-        alert('Pranaam! Registration for Maya ki Maya Guru Maa ke Sang was successful.');
+        alert('Pranaam! Registration Successful.');
         window.location.reload();
       } catch (err) {
-        alert('Submission failed. Please check your internet and try again.');
+        alert('Error occurred. Please try again.');
         btn.disabled = false;
-        btn.innerHTML = `SUBMIT REGISTRATION <i class="fa-solid fa-paper-plane ml-2"></i>`;
+        btn.innerHTML = `SUBMIT NOW <i class="fa-solid fa-check-circle ml-2"></i>`;
       }
     };
   </script>
