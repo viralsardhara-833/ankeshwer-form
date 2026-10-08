@@ -3,251 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Maya ki Maya Guru Maa ke Sang | Registration</title>
+  <title>Maiya ki Maya - with P.P. Gurumaa</title>
 
-  <!-- Tailwind CSS & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    :root {
-      --gold-primary: #b08d57;
-    }
+    :root { --gold: #b08d57; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: black; overflow-x: hidden; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body { 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background: black;
-    }
-
-    /* Fixed Blurred Background Container */
     .bg-wallpaper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1499244015948-ac75085284fb?q=80&w=2000&auto=format&fit=crop') center center no-repeat;
-      background-size: cover;
-      z-index: -1;
-      transition: filter 0.8s ease, transform 0.8s ease;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1499244015948-ac75085284fb?q=80&w=2000') center center no-repeat;
+      background-size: cover; z-index: -1; transition: filter 0.8s ease;
     }
+    .bg-wallpaper.blurred { filter: blur(15px) brightness(0.4); }
 
-    /* When the form is active, background blurs */
-    .bg-wallpaper.blurred {
-      filter: blur(15px) brightness(0.5);
-      transform: scale(1.05);
-    }
-
-    .landing-page {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
+    .landing-page { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .stylish-heading {
       font-family: 'Cinzel', serif;
       background: linear-gradient(to bottom, #ffffff, #b08d57);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center;
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.05); 
-      backdrop-filter: blur(20px); 
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2.5rem;
     }
-
-    .form-card {
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 20px;
-    }
-
+    .form-card { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; }
+    
     .input-field {
-      width: 100%;
-      background: #f1f5f9;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 16px;
-      outline: none;
+      width: 100%; background: #f1f5f9; border: 1.5px solid #e2e8f0;
+      border-radius: 10px; padding: 12px; font-size: 16px; outline: none; margin-top: 5px;
     }
+    .label-text { font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; }
 
     .btn-gold {
-      background: linear-gradient(135deg, #b08d57, #8a6d3b);
-      color: white;
-      font-weight: 800;
-      transition: 0.3s;
+      background: linear-gradient(135deg, #b08d57, #8a6d3b); color: white;
+      font-weight: 800; transition: 0.3s; padding: 1rem 2.5rem; border-radius: 99px;
     }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-    .btn-gold:hover {
-      filter: brightness(1.1);
-      transform: translateY(-2px);
-    }
-
-    .contact-footer {
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
+    .contact-section { background: rgba(0,0,0,0.5); padding: 2rem; text-align: center; color: white; border-top: 1px solid rgba(255,255,255,0.1); }
   </style>
 </head>
 <body>
 
-  <!-- FIXED BACKGROUND -->
   <div id="mainBg" class="bg-wallpaper"></div>
 
-  <!-- LANDING PAGE (Section 1) -->
+  <!-- LANDING PAGE -->
   <section class="landing-page px-6">
-    <!-- Logo at Top Left -->
-    <div class="absolute top-6 left-6">
-      <img src="logo.png" alt="Logo" class="h-12 sm:h-16 w-auto drop-shadow-lg">
+    <div class="absolute top-8 left-8">
+      <img src="logo.png" alt="Logo" class="h-14 w-auto">
     </div>
 
     <div class="text-center">
       <h1 class="stylish-heading text-4xl sm:text-7xl font-black mb-4">
-        MAYA KI MAYA<br>GURU MAA KE SANG
+        Maiya ki Maya<br><span class="text-2xl sm:text-4xl opacity-90">with P.P. Gurumaa</span>
       </h1>
-      <p class="text-white/70 tracking-[0.3em] text-xs uppercase">A Divine Discourse with Guru Maa</p>
+      <p class="text-white/60 tracking-[0.4em] text-[10px] uppercase">Special Spiritual Discourse</p>
     </div>
 
-    <!-- Registration Button at Bottom -->
     <div class="absolute bottom-12">
-      <a href="#registration-form" class="btn-gold px-10 py-4 rounded-full text-lg shadow-2xl animate-bounce flex items-center gap-2">
-        REGISTRATION <i class="fa-solid fa-chevron-down"></i>
-      </a>
+      <a href="#registration" class="btn-gold animate-bounce">REGISTRATION <i class="fa-solid fa-arrow-down ml-2"></i></a>
     </div>
   </section>
 
-  <!-- REGISTRATION FORM (Section 2) -->
-  <section id="registration-form" class="min-h-screen py-20 flex justify-center items-start px-4">
-    <div class="glass-panel w-full max-w-2xl rounded-[2.5rem] overflow-hidden shadow-2xl fade-in">
+  <!-- FORM SECTION -->
+  <section id="registration" class="min-h-screen py-20 px-4 flex justify-center">
+    <div class="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl">
       
-      <header class="py-10 px-6 text-center border-b border-white/10">
-        <h2 class="stylish-heading text-3xl font-black mb-2">Participant Details</h2>
+      <header class="py-12 text-center">
+        <h2 class="stylish-heading text-3xl font-bold">Register Your Presence</h2>
       </header>
 
-      <main class="p-6 sm:p-10">
-        <form id="registrationForm" class="space-y-8">
-          
-          <!-- PRIMARY MEMBER -->
-          <div class="form-card p-6 sm:p-8">
-            <div class="flex items-center gap-3 mb-6">
-              <span class="bg-[#b08d57] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</span>
-              <h2 class="font-bold text-xl text-stone-800">Primary Participant</h2>
-            </div>
-
-            <div class="flex flex-col gap-4">
-              <div><label class="text-[10px] font-bold uppercase text-slate-500">Full Name *</label><input type="text" id="name1" required placeholder="Full Name" class="input-field"></div>
+      <div class="p-6 sm:p-10">
+        <form id="regForm">
+          <!-- Member 1 -->
+          <div class="form-card">
+            <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
+              <span class="bg-[#b08d57] text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span> 
+              Primary Member (Compulsory)
+            </h3>
+            
+            <div class="space-y-4">
+              <div><label class="label-text">Full Name</label><input type="text" id="name1" required class="input-field"></div>
               <div>
-                <label class="text-[10px] font-bold uppercase text-slate-500">Select City *</label>
+                <label class="label-text">Select City</label>
                 <select id="city1" required class="input-field">
-                  <option value="">-- Choose City --</option>
+                  <option value="">-- Select City --</option>
                   <option value="Ankleshwar">Ankleshwar</option>
                   <option value="Bharuch">Bharuch</option>
                   <option value="Vapi">Vapi</option>
                 </select>
               </div>
-              <div><label class="text-[10px] font-bold uppercase text-slate-500">Mobile *</label><input type="tel" id="mobile1" required pattern="[0-9]{10}" placeholder="10-digit number" class="input-field"></div>
-              <div><label class="text-[10px] font-bold uppercase text-slate-500">Age (18-35) *</label><input type="number" id="age1" required min="18" max="35" placeholder="Age" class="input-field"></div>
-              <div><label class="text-[10px] font-bold uppercase text-slate-500">Residential Address *</label><textarea id="address1" required rows="3" placeholder="Full Address" class="input-field"></textarea></div>
+              <div><label class="label-text">Mobile Number</label><input type="tel" id="mobile1" required pattern="[0-9]{10}" class="input-field"></div>
+              <div><label class="label-text">Age (18-35 only)</label><input type="number" id="age1" required min="18" max="35" class="input-field"></div>
+              <div><label class="label-text">Full Address</label><textarea id="address1" required rows="3" class="input-field"></textarea></div>
             </div>
           </div>
 
-          <div id="additionalMembers" class="space-y-8"></div>
+          <!-- Dynamic Members -->
+          <div id="additionalList"></div>
 
-          <div class="flex flex-col gap-4">
-            <button type="button" id="addMemberBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl hover:bg-white/10 transition-all font-bold text-xs tracking-widest">
-              <i class="fa-solid fa-plus-circle mr-2"></i> ADD MEMBER
-            </button>
-            <button type="submit" id="submitBtn" class="w-full py-5 btn-gold rounded-2xl text-xl shadow-xl mt-4">
-              SUBMIT NOW <i class="fa-solid fa-om ml-2"></i>
-            </button>
-          </div>
+          <button type="button" id="addBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl mb-6 font-bold text-xs">
+            <i class="fa-solid fa-plus mr-2"></i> ADD FAMILY MEMBER
+          </button>
+
+          <button type="submit" id="submitBtn" class="w-full btn-gold text-xl py-5 rounded-2xl">
+            SUBMIT REGISTRATION
+          </button>
         </form>
-      </main>
+      </div>
 
-      <!-- CONTACT DETAILS ADDED HERE -->
-      <footer class="contact-footer">
-        <h3 class="text-[#b08d57] font-bold text-lg mb-4">CONTACT US</h3>
-        <div class="flex flex-col sm:flex-row justify-center gap-8 text-sm">
-          <div><i class="fa-solid fa-phone text-[#b08d57] mr-2"></i> +91 98243 30246</div>
-          <div><i class="fa-solid fa-envelope text-[#b08d57] mr-2"></i> dhyansthalinavsari@gmail.com</div>
+      <footer class="contact-section">
+        <h4 class="text-gold font-bold mb-4 tracking-widest">CONTACT DETAILS</h4>
+        <div class="space-y-2 text-sm opacity-80">
+          <p><i class="fa-solid fa-phone mr-2"></i> +91 98243 30246</p>
+          <p><i class="fa-solid fa-envelope mr-2"></i> dhyansthalinavsari@gmail.com</p>
         </div>
-        <p class="mt-8 text-white/20 text-[10px] tracking-widest uppercase">Gurutattva Spiritual Sanctuary</p>
       </footer>
     </div>
   </section>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx11gkiVOS8G0imymHIQ3b-0VavqPRLQfwcurAyBnF2yAfDgUlnLHZKM7xyMUQh3Mpe/exec";
+    // PASTE YOUR GOOGLE SCRIPT URL BELOW
+    const WEB_APP_URL = "YOUR_APPS_SCRIPT_URL_HERE";
 
-    // Handle Background Blur on Scroll
+    // Background blur logic
     window.addEventListener('scroll', () => {
       const bg = document.getElementById('mainBg');
-      if (window.scrollY > window.innerHeight * 0.2) {
-        bg.classList.add('blurred');
-      } else {
-        bg.classList.remove('blurred');
-      }
+      window.scrollY > 200 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
     });
 
-    let memberCount = 1;
-    const addBtn = document.getElementById('addMemberBtn');
-    const container = document.getElementById('additionalMembers');
-
-    addBtn.onclick = () => {
-      memberCount++;
-      const div = document.createElement('div');
-      div.className = "form-card p-6 sm:p-8 relative fade-in";
-      div.innerHTML = `
-        <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-stone-300 hover:text-red-500 transition-colors">
-          <i class="fa-solid fa-circle-xmark text-2xl"></i>
-        </button>
-        <div class="flex items-center gap-3 mb-6">
-          <span class="bg-stone-200 text-stone-500 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">${memberCount}</span>
-          <h2 class="font-bold text-xl text-stone-800">Additional Participant</h2>
-        </div>
-        <div class="flex flex-col gap-4">
-          <input type="text" required placeholder="Full Name" class="input-field">
-          <select required class="input-field">
-            <option value="">-- Choose City --</option>
-            <option value="Ankleshwar">Ankleshwar</option>
-            <option value="Bharuch">Bharuch</option>
-            <option value="Vapi">Vapi</option>
-          </select>
-          <input type="tel" required pattern="[0-9]{10}" placeholder="Mobile" class="input-field">
-          <input type="number" required min="18" max="35" placeholder="Age" class="input-field">
-          <textarea required rows="3" placeholder="Address" class="input-field"></textarea>
-        </div>
-      `;
-      container.appendChild(div);
+    // Add Member logic
+    let count = 1;
+    document.getElementById('addBtn').onclick = () => {
+      count++;
+      const html = `
+        <div class="form-card relative">
+          <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-slate-300"><i class="fa-solid fa-circle-xmark text-xl"></i></button>
+          <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">Member ${count}</h3>
+          <div class="space-y-4">
+            <div><label class="label-text">Full Name</label><input type="text" required class="input-field"></div>
+            <div><label class="label-text">Select City</label><select required class="input-field"><option value="Ankleshwar">Ankleshwar</option><option value="Bharuch">Bharuch</option><option value="Vapi">Vapi</option></select></div>
+            <div><label class="label-text">Mobile</label><input type="tel" required pattern="[0-9]{10}" class="input-field"></div>
+            <div><label class="label-text">Age (18-35)</label><input type="number" required min="18" max="35" class="input-field"></div>
+            <div><label class="label-text">Address</label><textarea required rows="2" class="input-field"></textarea></div>
+          </div>
+        </div>`;
+      document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
     };
 
-    document.getElementById('registrationForm').onsubmit = async (e) => {
+    // Submit Logic
+    document.getElementById('regForm').onsubmit = async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.innerHTML = `PROCESSING...`;
+      btn.disabled = true; btn.innerText = "SAVING...";
 
-      const participants = [];
-      participants.push({
+      const data = [];
+      data.push({
         name: document.getElementById('name1').value,
         city: document.getElementById('city1').value,
         mobile: document.getElementById('mobile1').value,
@@ -255,22 +172,18 @@
         address: document.getElementById('address1').value
       });
 
-      const extraCards = container.querySelectorAll('.form-card');
-      extraCards.forEach(card => {
+      document.querySelectorAll('#additionalList .form-card').forEach(card => {
         const inps = card.querySelectorAll('input, select, textarea');
-        participants.push({
-          name: inps[0].value, city: inps[1].value, mobile: inps[2].value, age: inps[3].value, address: inps[4].value
-        });
+        data.push({ name: inps[0].value, city: inps[1].value, mobile: inps[2].value, age: inps[3].value, address: inps[4].value });
       });
 
       try {
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ event: "Maya ki Maya", data: participants }) });
-        alert('Pranaam! Registration Successful.');
+        await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ event: "Maiya ki Maya", data: data }) });
+        alert("Registration Successful!");
         window.location.reload();
       } catch (err) {
-        alert('Error occurred. Please try again.');
-        btn.disabled = false;
-        btn.innerHTML = `SUBMIT NOW <i class="fa-solid fa-om ml-2"></i>`;
+        alert("Error saving data.");
+        btn.disabled = false; btn.innerText = "SUBMIT REGISTRATION";
       }
     };
   </script>
