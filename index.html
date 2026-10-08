@@ -14,11 +14,11 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: #000; color: white; overflow-x: hidden; }
 
-    /* Background Setup using background.jpg */
+    /* Background Setup using background.png */
     .bg-wallpaper {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%), 
-                  url('background.jpg') center right no-repeat;
+                  url('background.png') center right no-repeat;
       background-size: cover; z-index: -1; transition: filter 0.8s ease;
     }
     
@@ -26,8 +26,8 @@
     @media (max-width: 640px) {
       .bg-wallpaper {
         background-position: 75% center; 
-        background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 100%), 
-                        url('background.jpg');
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.85) 100%), 
+                        url('background.png');
       }
     }
 
@@ -67,13 +67,16 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
+    .loading-spinner { animation: spin 1s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
   <div id="mainBg" class="bg-wallpaper"></div>
 
-  <!-- HERO SECTION - Text on Left for Desktop -->
+  <!-- HERO SECTION -->
   <section id="hero" class="h-screen flex flex-col justify-center items-center sm:items-start px-6 sm:px-20 lg:px-32">
     <div class="text-center sm:text-left mt-[-80px] sm:mt-0">
       <h1 class="stylish-heading text-5xl sm:text-7xl lg:text-8xl font-black mb-4 leading-tight">
@@ -178,7 +181,6 @@
   </section>
 
   <script>
-    // YOUR GOOGLE SCRIPT URL
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxdB_0qKOhSRKS2Cn_e8yQigsOF2cJe6_jrcVCMnpZv-vXa0ztIUpLZcqgxiF9p5qx0/exec";
 
     // Scroll Blur
@@ -192,7 +194,7 @@
     document.getElementById('addBtn').onclick = () => {
       count++;
       const html = `
-        <div class="form-card shadow-xl animate-slide-in">
+        <div class="form-card shadow-xl animate-fade-in">
           <button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500 transition">
             <i class="fa-solid fa-circle-xmark text-2xl"></i>
           </button>
@@ -223,25 +225,34 @@
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> CONFIRMING ${allCards.length} SEATS...`;
 
-      const data = [];
+      const dataArray = [];
       allCards.forEach((card, index) => {
         let addr = card.querySelector('[name="address"]').value;
-        data.push({
+        dataArray.push({
           name: card.querySelector('[name="name"]').value,
           city: card.querySelector('[name="city"]').value,
           mobile: card.querySelector('[name="mobile"]').value,
           age: card.querySelector('[name="age"]').value,
           address: addr === "SAME_AS_PRIMARY" ? primaryAddress : addr,
-          type: index === 0 ? "Primary" : "Family"
+          type: index === 0 ? "Primary" : "Family Member"
         });
       });
 
       try {
-        await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ data: data }) });
+        await fetch(WEB_APP_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: dataArray }) 
+        });
+        
+        // Switch to Success View
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
         window.scrollTo({ top: document.getElementById('registration').offsetTop - 50, behavior: 'smooth' });
+        
       } catch (err) {
+        // Fallback in case of browser blocks
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
       }
