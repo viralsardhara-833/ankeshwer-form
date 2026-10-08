@@ -14,90 +14,82 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: #000; color: white; overflow-x: hidden; }
 
-    /* Background & Overlays */
+    /* Optimized Background for the specific image */
     .bg-wallpaper {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1499244015948-ac75085284fb?q=80&w=2000') center center no-repeat;
+      /* Replace the URL below with your actual image path if this link expires */
+      background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%), 
+                  url('https://replicate.delivery/yhqm/Zfef6jS8XmToakO8uM82xHeZfXqN8mI2tqfeB6uV7o5SInYNB/out-0.png') center right no-repeat;
       background-size: cover; z-index: -1; transition: filter 0.8s ease;
     }
+    
+    /* Mobile specific background positioning to keep face visible */
+    @media (max-width: 640px) {
+      .bg-wallpaper {
+        background-position: 70% center; 
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.7) 100%), 
+                        url('https://replicate.delivery/yhqm/Zfef6jS8XmToakO8uM82xHeZfXqN8mI2tqfeB6uV7o5SInYNB/out-0.png');
+      }
+    }
+
     .bg-wallpaper.blurred { filter: blur(12px) brightness(0.3); }
 
-    /* Typography */
     .stylish-heading {
       font-family: 'Cinzel', serif;
       background: linear-gradient(to bottom, #ffffff 30%, var(--gold) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    /* Glass Panels */
     .glass-panel {
       background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px);
       border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 3rem;
     }
 
-    /* Form Design */
     .form-card { 
       background: white; border-radius: 24px; padding: 2rem; margin-bottom: 2rem; 
       position: relative; transition: all 0.4s ease; border: 1px solid rgba(0,0,0,0.05);
       animation: fadeInUp 0.6s ease forwards;
     }
-    .form-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
     
     .input-field {
       width: 100%; background: #f8fafc; border: 2px solid #e2e8f0;
       border-radius: 12px; padding: 14px; font-size: 16px; outline: none; margin-top: 6px; 
-      color: #1e293b; transition: all 0.3s ease;
+      color: #1e293b;
     }
-    .input-field:focus { border-color: var(--gold); background: white; box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.1); }
-    .label-text { font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-
-    /* Buttons */
+    .input-field:focus { border-color: var(--gold); background: white; }
+    
     .btn-gold {
       background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: white;
-      font-weight: 800; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-      padding: 1.2rem 3rem; border-radius: 99px; display: inline-block;
-      cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 1px;
+      font-weight: 800; transition: all 0.4s ease; padding: 1.2rem 3rem; border-radius: 99px; 
+      display: inline-block; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 1px;
     }
-    .btn-gold:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(176, 141, 87, 0.4); }
-    .btn-gold:active { transform: scale(0.98); }
 
-    /* Animations */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes pulseSuccess {
-      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-      70% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-    }
-    .success-icon { animation: pulseSuccess 2s infinite; border-radius: 50%; }
-
-    /* Contact Section */
-    .contact-card {
-      background: rgba(255, 255, 255, 0.05); border-radius: 20px;
-      padding: 25px; border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .contact-link { transition: color 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
-    .contact-link:hover { color: var(--gold); }
   </style>
 </head>
 <body>
 
   <div id="mainBg" class="bg-wallpaper"></div>
 
-  <!-- LANDING PAGE -->
-  <section id="hero" class="h-screen flex flex-col justify-center items-center px-6 text-center">
-    <div class="animate-fade-in">
-      <h1 class="stylish-heading text-5xl sm:text-8xl font-black mb-6">
-        Maiya ki Maya<br><span class="text-2xl sm:text-4xl opacity-90 block mt-2">with P.P. Gurumaa</span>
+  <!-- LANDING PAGE - REPOSITIONED TEXT -->
+  <section id="hero" class="h-screen flex flex-col justify-center items-center sm:items-start px-6 sm:px-20 lg:px-32">
+    <div class="text-center sm:text-left mt-[-100px] sm:mt-0">
+      <h1 class="stylish-heading text-5xl sm:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+        Maiya ki Maya<br>
+        <span class="text-2xl sm:text-4xl lg:text-5xl opacity-90 block mt-2">with P.P. Gurumaa</span>
       </h1>
-      <p class="text-white/50 tracking-[0.6em] text-xs sm:text-sm uppercase">Special Spiritual Discourse</p>
-    </div>
-    <div class="absolute bottom-16">
-      <a href="#registration" class="btn-gold">
-        BEGIN REGISTRATION <i class="fa-solid fa-chevron-down ml-2"></i>
-      </a>
+      <p class="text-white/70 tracking-[0.4em] text-xs sm:text-sm uppercase font-light">
+        Special Spiritual Discourse
+      </p>
+      
+      <div class="mt-10">
+        <a href="#registration" class="btn-gold shadow-2xl">
+          REGISTER NOW <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -105,29 +97,24 @@
   <section id="registration" class="min-h-screen py-24 px-4 flex flex-col items-center">
     <div class="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl">
       
-      <!-- The Form -->
       <div id="formContainer">
         <header class="py-16 text-center">
           <h2 class="stylish-heading text-4xl font-bold">Register Presence</h2>
-          <p class="text-white/40 text-xs mt-2 uppercase tracking-widest">Secure your seat today</p>
+          <p class="text-white/40 text-xs mt-2 uppercase tracking-widest">Join the divine gathering</p>
         </header>
 
         <div class="px-6 pb-12 sm:px-12">
           <form id="regForm">
-            <!-- Primary Member Card -->
             <div class="form-card main-member">
               <h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">
-                <span class="bg-[#b08d57] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg">1</span> 
+                <span class="bg-[#b08d57] text-white w-8 h-8 rounded-full flex items-center justify-center">1</span> 
                 Primary Member
               </h3>
               <div class="space-y-5">
-                <div class="group">
-                  <label class="label-text">Full Name</label>
-                  <input type="text" name="name" required class="input-field" placeholder="Enter name as per ID">
-                </div>
+                <div><label class="text-[11px] font-bold text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field"></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="label-text">City</label>
+                    <label class="text-[11px] font-bold text-slate-400 uppercase">City</label>
                     <select name="city" required class="input-field">
                       <option value="">-- Choose --</option>
                       <option value="Ankleshwar">Ankleshwar</option>
@@ -136,25 +123,18 @@
                     </select>
                   </div>
                   <div>
-                    <label class="label-text">Mobile (10 Digits)</label>
-                    <input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="98XXXXXXXX">
+                    <label class="text-[11px] font-bold text-slate-400 uppercase">Mobile (10 Digits)</label>
+                    <input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" class="input-field">
                   </div>
                 </div>
-                <div>
-                  <label class="label-text">Age (18-35 Only)</label>
-                  <input type="number" name="age" required min="18" max="35" class="input-field" placeholder="Enter age">
-                </div>
-                <div>
-                  <label class="label-text">Residential Address</label>
-                  <textarea name="address" required rows="3" class="input-field" placeholder="Complete address..."></textarea>
-                </div>
+                <div><label class="text-[11px] font-bold text-slate-400 uppercase">Age (18-35 Only)</label><input type="number" name="age" required min="18" max="35" class="input-field"></div>
+                <div><label class="text-[11px] font-bold text-slate-400 uppercase">Full Address</label><textarea name="address" required rows="3" class="input-field"></textarea></div>
               </div>
             </div>
 
-            <!-- Dynamic Family List -->
             <div id="additionalList"></div>
 
-            <button type="button" id="addBtn" class="w-full py-5 border-2 border-dashed border-white/10 text-white/60 rounded-2xl mb-8 font-bold text-xs hover:border-gold hover:text-gold transition-all duration-300">
+            <button type="button" id="addBtn" class="w-full py-5 border-2 border-dashed border-white/10 text-white/60 rounded-2xl mb-8 font-bold text-xs hover:border-gold hover:text-gold transition-all">
               <i class="fa-solid fa-user-plus mr-2"></i> ADD FAMILY MEMBER
             </button>
 
@@ -166,30 +146,18 @@
       </div>
 
       <!-- Success Screen -->
-      <div id="successScreen" class="hidden p-12 text-center py-32 animate-fade-in">
-        <div class="mb-8 inline-block success-icon p-4 bg-green-500/20">
-            <i class="fa-solid fa-circle-check text-8xl text-green-500"></i>
-        </div>
-        <h2 class="stylish-heading text-5xl font-black mb-6 uppercase tracking-tighter">Jai Aatmeshwar</h2>
-        <p class="text-white/70 text-xl mb-10 max-w-sm mx-auto">Your spiritual journey is confirmed. We have saved your details.</p>
-        <button onclick="window.location.reload()" class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-full transition text-sm font-bold uppercase tracking-widest">
-          Register Another
-        </button>
+      <div id="successScreen" class="hidden p-12 text-center py-32">
+        <i class="fa-solid fa-circle-check text-8xl text-green-500 mb-8"></i>
+        <h2 class="stylish-heading text-5xl font-black mb-6 uppercase">Jai Aatmeshwar</h2>
+        <p class="text-white/70 text-xl mb-10">Registration confirmed successfully.</p>
+        <button onclick="window.location.reload()" class="bg-white/10 px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest">Register Another</button>
       </div>
 
-      <!-- Footer / Contact -->
-      <footer class="bg-black/40 p-8 sm:p-12 border-t border-white/5">
-        <div class="contact-card text-center">
-            <h4 class="text-gold font-black mb-6 tracking-[0.2em] text-sm">HELP & SUPPORT</h4>
-            <div class="space-y-4">
-                <a href="tel:+919824330246" class="contact-link text-lg">
-                    <i class="fa-solid fa-phone text-gold"></i> +91 98243 30246
-                </a>
-                <a href="mailto:dhyansthalinavsari@gmail.com" class="contact-link text-sm opacity-80">
-                    <i class="fa-solid fa-envelope text-gold"></i> dhyansthalinavsari@gmail.com
-                </a>
-            </div>
-            <p class="text-[10px] text-white/20 mt-8 uppercase tracking-widest">&copy; 2024 Dhyansthali Navsari. All rights reserved.</p>
+      <footer class="bg-black/40 p-8 sm:p-12 border-t border-white/5 text-center">
+        <h4 class="text-gold font-black mb-4 tracking-[0.2em] text-sm uppercase">Help & Support</h4>
+        <div class="space-y-2 opacity-80">
+            <p><i class="fa-solid fa-phone mr-2 text-gold"></i> +91 98243 30246</p>
+            <p><i class="fa-solid fa-envelope mr-2 text-gold"></i> dhyansthalinavsari@gmail.com</p>
         </div>
       </footer>
     </div>
@@ -198,90 +166,44 @@
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxdB_0qKOhSRKS2Cn_e8yQigsOF2cJe6_jrcVCMnpZv-vXa0ztIUpLZcqgxiF9p5qx0/exec";
 
-    // Dynamic Blur logic
     window.addEventListener('scroll', () => {
       const bg = document.getElementById('mainBg');
       window.scrollY > 150 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
     });
 
-    // Add Family Member logic
-    let memberCount = 1;
     document.getElementById('addBtn').onclick = () => {
-      memberCount++;
-      const html = `
-        <div class="form-card shadow-xl" style="animation-delay: 0.1s">
-          <button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500 transition">
-            <i class="fa-solid fa-circle-xmark text-2xl"></i>
-          </button>
-          <h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">
-             <span class="bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-inner">${memberCount}</span>
-             Family Member
-          </h3>
-          <div class="space-y-5">
-            <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Full name"></div>
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="label-text">City</label>
-                    <select name="city" required class="input-field">
-                        <option value="Ankleshwar">Ankleshwar</option>
-                        <option value="Bharuch">Bharuch</option>
-                        <option value="Vapi">Vapi</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="label-text">Mobile</label>
-                    <input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="10 Digits">
-                </div>
-            </div>
-            <div><label class="label-text">Age</label><input type="number" name="age" required min="18" max="35" class="input-field" placeholder="18-35"></div>
-            <input type="hidden" name="address" value="PRIMARY_ADDR">
-          </div>
-        </div>`;
+      const html = `<div class="form-card shadow-xl"><button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500"><i class="fa-solid fa-circle-xmark text-2xl"></i></button><h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">Family Member</h3><div class="space-y-5"><div><label class="text-[11px] font-bold text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field"></div><div class="grid grid-cols-2 gap-4"><div><label class="text-[11px] font-bold text-slate-400 uppercase">City</label><select name="city" required class="input-field"><option value="Ankleshwar">Ankleshwar</option><option value="Bharuch">Bharuch</option><option value="Vapi">Vapi</option></select></div><div><label class="text-[11px] font-bold text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" class="input-field"></div></div><div><label class="text-[11px] font-bold text-slate-400 uppercase">Age</label><input type="number" name="age" required min="18" max="35" class="input-field"></div><input type="hidden" name="address" value="PRIMARY"></div></div>`;
       document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
     };
 
-    // Form Submission logic
     document.getElementById('regForm').onsubmit = async (e) => {
       e.preventDefault();
-      
       const btn = document.getElementById('submitBtn');
       const allCards = document.querySelectorAll('.form-card');
       const primaryAddress = document.querySelector('.main-member textarea[name="address"]').value;
 
-      // Visual Loading state
       btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> CONFIRMING ${allCards.length} SEATS...`;
+      btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> CONFIRMING...`;
 
       const data = [];
       allCards.forEach((card, index) => {
         let addr = card.querySelector('[name="address"]').value;
-        if (addr === "PRIMARY_ADDR") addr = primaryAddress;
-
         data.push({
           name: card.querySelector('[name="name"]').value,
           city: card.querySelector('[name="city"]').value,
           mobile: card.querySelector('[name="mobile"]').value,
           age: card.querySelector('[name="age"]').value,
-          address: addr,
+          address: addr === "PRIMARY" ? primaryAddress : addr,
           type: index === 0 ? "Primary" : "Family"
         });
       });
 
       try {
-        await fetch(WEB_APP_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          cache: 'no-cache',
-          body: JSON.stringify({ event: "Maiya ki Maya", data: data })
-        });
-
-        // Show Success UI
+        await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ data: data }) });
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
         window.scrollTo({ top: document.getElementById('registration').offsetTop - 50, behavior: 'smooth' });
-
       } catch (err) {
-        // Safe fallback
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
       }
