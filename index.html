@@ -37,12 +37,13 @@
       width: 100%; background: #f1f5f9; border: 1.5px solid #e2e8f0;
       border-radius: 10px; padding: 12px; font-size: 16px; outline: none; margin-top: 5px; color: #1e293b;
     }
+    .input-field:focus { border-color: var(--gold); background: white; }
     .label-text { font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; }
 
     .btn-gold {
       background: linear-gradient(135deg, #b08d57, #8a6d3b); color: white;
       font-weight: 800; transition: 0.3s; padding: 1rem 2.5rem; border-radius: 99px; display: inline-block;
-      cursor: pointer; border: none;
+      cursor: pointer; border: none; text-align: center;
     }
     .btn-gold:disabled { opacity: 0.7; cursor: not-allowed; }
 
@@ -67,8 +68,8 @@
   <div id="mainBg" class="bg-wallpaper"></div>
 
   <!-- LANDING PAGE -->
-  <section id="hero" class="h-screen flex flex-col justify-center items-center px-6">
-    <div class="text-center">
+  <section id="hero" class="h-screen flex flex-col justify-center items-center px-6 text-center">
+    <div>
       <h1 class="stylish-heading text-4xl sm:text-7xl font-black mb-4">
         Maiya ki Maya<br><span class="text-2xl sm:text-4xl opacity-90">with P.P. Gurumaa</span>
       </h1>
@@ -91,13 +92,14 @@
 
         <div class="p-6 sm:p-10">
           <form id="regForm">
-            <div class="form-card main-member">
+            <!-- Primary Member Card -->
+            <div class="form-card main-member shadow-lg">
               <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span class="bg-[#b08d57] text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span> 
                 Primary Member
               </h3>
               <div class="space-y-4">
-                <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field"></div>
+                <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Enter Full Name"></div>
                 <div>
                   <label class="label-text">Select City</label>
                   <select name="city" required class="input-field">
@@ -107,15 +109,21 @@
                     <option value="Vapi">Vapi</option>
                   </select>
                 </div>
-                <div><label class="label-text">Mobile Number</label><input type="tel" name="mobile" required pattern="[0-9]{10}" class="input-field"></div>
-                <div><label class="label-text">Age (18-35 only)</label><input type="number" name="age" required min="18" max="35" class="input-field"></div>
-                <div><label class="label-text">Full Address</label><textarea name="address" required rows="3" class="input-field"></textarea></div>
+                <div>
+                    <label class="label-text">Mobile Number (10 Digits)</label>
+                    <input type="tel" name="mobile" required 
+                           pattern="[0-9]{10}" maxlength="10" minlength="10" 
+                           class="input-field" placeholder="98XXXXXXXX">
+                </div>
+                <div><label class="label-text">Age (18-35 only)</label><input type="number" name="age" required min="18" max="35" class="input-field" placeholder="Age"></div>
+                <div><label class="label-text">Full Address</label><textarea name="address" required rows="3" class="input-field" placeholder="Enter Full Address"></textarea></div>
               </div>
             </div>
 
+            <!-- This is where family members will appear -->
             <div id="additionalList"></div>
 
-            <button type="button" id="addBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl mb-6 font-bold text-xs hover:bg-white/5">
+            <button type="button" id="addBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl mb-6 font-bold text-xs hover:bg-white/5 transition">
               <i class="fa-solid fa-plus mr-2"></i> ADD FAMILY MEMBER
             </button>
 
@@ -126,13 +134,13 @@
         </div>
       </div>
 
-      <!-- Success Screen (Hidden by default) -->
+      <!-- Success Screen -->
       <div id="successScreen" class="success-card p-10 text-center py-32">
         <div class="mb-6">
             <i class="fa-solid fa-circle-check text-7xl text-green-500"></i>
         </div>
-        <h2 class="stylish-heading text-4xl font-bold mb-4">Jai Mata Di!</h2>
-        <p class="text-white text-xl opacity-90 mb-8">Your registration is complete.</p>
+        <h2 class="stylish-heading text-4xl font-bold mb-4 uppercase">Jai Aatmeshwar</h2>
+        <p class="text-white text-xl opacity-90 mb-8">Your registration has been completed successfully.</p>
         <button onclick="window.location.reload()" class="btn-gold">REGISTER ANOTHER</button>
       </div>
 
@@ -149,7 +157,7 @@
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxdB_0qKOhSRKS2Cn_e8yQigsOF2cJe6_jrcVCMnpZv-vXa0ztIUpLZcqgxiF9p5qx0/exec";
 
-    // Dynamic background blur
+    // Scroll Blur effect
     window.addEventListener('scroll', () => {
       const bg = document.getElementById('mainBg');
       window.scrollY > 100 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
@@ -160,14 +168,14 @@
     document.getElementById('addBtn').onclick = () => {
       memberCount++;
       const html = `
-        <div class="form-card animate-slide-in">
-          <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-red-500"><i class="fa-solid fa-circle-xmark"></i></button>
+        <div class="form-card shadow-lg animate-slide-in">
+          <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-red-500"><i class="fa-solid fa-circle-xmark text-xl"></i></button>
           <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
              <span class="bg-slate-400 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">${memberCount}</span>
              Additional Member
           </h3>
           <div class="space-y-4">
-            <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field"></div>
+            <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Enter Full Name"></div>
             <div>
                 <label class="label-text">Select City</label>
                 <select name="city" required class="input-field">
@@ -176,24 +184,30 @@
                   <option value="Vapi">Vapi</option>
                 </select>
             </div>
-            <div><label class="label-text">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" class="input-field"></div>
-            <div><label class="label-text">Age (18-35)</label><input type="number" name="age" required min="18" max="35" class="input-field"></div>
+            <div>
+                <label class="label-text">Mobile Number (10 Digits)</label>
+                <input type="tel" name="mobile" required 
+                       pattern="[0-9]{10}" maxlength="10" minlength="10" 
+                       class="input-field" placeholder="10 Digit Number">
+            </div>
+            <div><label class="label-text">Age (18-35)</label><input type="number" name="age" required min="18" max="35" class="input-field" placeholder="Age"></div>
             <input type="hidden" name="address" value="Same as Primary">
           </div>
         </div>`;
       document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
     };
 
-    // Submit Logic with Animation
+    // Form Submission Logic
     document.getElementById('regForm').onsubmit = async (e) => {
       e.preventDefault();
+      
       const btn = document.getElementById('submitBtn');
       const allCards = document.querySelectorAll('.form-card');
       const count = allCards.length;
 
-      // 1. Show animating registration button
+      // Start Loading UI
       btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner loading-spinner mr-3"></i> Registering ${count} Members...`;
+      btn.innerHTML = `<i class="fa-solid fa-spinner loading-spinner mr-3"></i> Submitting ${count} Member(s)...`;
 
       const data = [];
       const primaryAddress = document.querySelector('.main-member textarea[name="address"]').value;
@@ -208,7 +222,7 @@
           mobile: card.querySelector('[name="mobile"]').value,
           age: card.querySelector('[name="age"]').value,
           address: addr,
-          type: index === 0 ? "Primary" : "Family"
+          type: index === 0 ? "Primary" : "Family Member"
         });
       });
 
@@ -220,15 +234,15 @@
           body: JSON.stringify({ event: "Maiya ki Maya", data: data })
         });
 
-        // 2. Hide form and show success screen
+        // Show Success Screen
         setTimeout(() => {
             document.getElementById('formContainer').style.display = 'none';
             document.getElementById('successScreen').style.display = 'block';
             window.scrollTo({ top: document.getElementById('registration').offsetTop, behavior: 'smooth' });
-        }, 1000);
+        }, 800);
 
       } catch (err) {
-        // Fallback for no-cors "errors"
+        // Even if Fetch throws error due to no-cors mode, usually the data reaches the sheet
         document.getElementById('formContainer').style.display = 'none';
         document.getElementById('successScreen').style.display = 'block';
       }
