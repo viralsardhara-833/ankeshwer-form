@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Maya ki Maya Guru Maa ke Sang | Registration</title>
+
+  <!-- Tailwind CSS & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold-primary: #b08d57;
+      --deep-brown: #2d271e;
+    }
+
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=2024&auto=format&fit=crop') center center no-repeat fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .stylish-heading {
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(to bottom, #f3e5ab, #b08d57);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.1); 
+      backdrop-filter: blur(25px); 
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .input-field {
+      width: 100%;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--gold-primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.1);
+    }
+
+    .label-text {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748b;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #b08d57 0%, #8a6d3b 100%);
+      color: white;
+      font-weight: 800;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(138, 109, 59, 0.4);
+    }
+
+    /* Animation */
+    .fade-in { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="min-h-screen py-8 px-4 flex justify-center items-start">
+
+  <div class="glass-panel w-full max-w-4xl rounded-[3rem] overflow-hidden">
+    
+    <!-- BIG STYLISH HEADING -->
+    <header class="pt-16 pb-12 px-6 text-center border-b border-white/10">
+      <h3 class="text-white tracking-[0.5em] text-xs mb-4 uppercase font-light">Divine Discourse with Guru Maa</h3>
+      <h1 class="stylish-heading text-4xl sm:text-7xl font-black leading-tight mb-2">
+        MAYA KI MAYA<br>GURU MAA KE SANG
+      </h1>
+      <div class="h-1 w-24 bg-gradient-to-r from-transparent via-[#b08d57] to-transparent mx-auto mt-6"></div>
+    </header>
+
+    <main class="p-6 sm:p-12">
+      <form id="registrationForm" class="space-y-8">
+        
+        <!-- PRIMARY MEMBER (Mandatory) -->
+        <div class="form-card p-6 sm:p-8 border-t-8 border-[#b08d57]">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="bg-[#b08d57] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</span>
+            <h2 class="font-bold text-2xl text-stone-800">Primary Registrant</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="label-text">Full Name</label>
+              <input type="text" id="name1" required placeholder="Enter full name" class="input-field">
+            </div>
+            <div>
+              <label class="label-text">Mobile Number</label>
+              <input type="tel" id="mobile1" required placeholder="Phone number" class="input-field">
+            </div>
+            <div class="md:col-span-2">
+              <label class="label-text">Residential Address</label>
+              <textarea id="address1" required rows="2" placeholder="Street, Area, City" class="input-field"></textarea>
+            </div>
+            <div>
+              <label class="label-text">Age (18-35 only)</label>
+              <input type="number" id="age1" required min="18" max="35" placeholder="Your age" class="input-field">
+            </div>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL MEMBERS CONTAINER -->
+        <div id="additionalMembers" class="space-y-8"></div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex flex-col gap-4">
+          <button type="button" id="addMemberBtn" class="w-full py-4 border-2 border-dashed border-white/30 text-white rounded-2xl hover:bg-white/10 transition-all font-bold text-sm tracking-widest">
+            <i class="fa-solid fa-plus-circle mr-2"></i> ADD FAMILY MEMBER / FRIEND
+          </button>
+
+          <button type="submit" id="submitBtn" class="btn-gold w-full py-5 rounded-2xl text-xl shadow-2xl mt-4">
+            CONFIRM REGISTRATION <i class="fa-solid fa-om ml-2"></i>
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="p-10 text-center text-white/60 text-xs tracking-widest border-t border-white/10">
+      DHYANSTHALI NAVSARI | SAMARPAN ASHRAM MARG <br>
+      © 2024 GURUTATTVA SPIRITUAL SANCTUARY
+    </footer>
+  </div>
+
+  <script>
+    // YOUR GOOGLE SCRIPT URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx11gkiVOS8G0imymHIQ3b-0VavqPRLQfwcurAyBnF2yAfDgUlnLHZKM7xyMUQh3Mpe/exec";
+
+    let memberCount = 1;
+    const addBtn = document.getElementById('addMemberBtn');
+    const container = document.getElementById('additionalMembers');
+
+    // Function to add new members
+    addBtn.onclick = () => {
+      memberCount++;
+      const div = document.createElement('div');
+      div.className = "form-card p-6 sm:p-8 fade-in relative";
+      div.innerHTML = `
+        <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-stone-400 hover:text-red-500">
+          <i class="fa-solid fa-times-circle text-xl"></i>
+        </button>
+        <div class="flex items-center gap-4 mb-8">
+          <span class="bg-stone-200 text-stone-600 w-10 h-10 rounded-full flex items-center justify-center font-bold">${memberCount}</span>
+          <h2 class="font-bold text-2xl text-stone-800">Additional Member</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="label-text">Full Name</label>
+            <input type="text" required placeholder="Enter name" class="input-field">
+          </div>
+          <div>
+            <label class="label-text">Mobile Number</label>
+            <input type="tel" required placeholder="Phone number" class="input-field">
+          </div>
+          <div class="md:col-span-2">
+            <label class="label-text">Residential Address</label>
+            <textarea required rows="2" placeholder="Address" class="input-field"></textarea>
+          </div>
+          <div>
+            <label class="label-text">Age (18-35 only)</label>
+            <input type="number" required min="18" max="35" placeholder="Age" class="input-field">
+          </div>
+        </div>
+      `;
+      container.appendChild(div);
+    };
+
+    // Form Submit Handler
+    document.getElementById('registrationForm').onsubmit = async (e) => {
+      e.preventDefault();
+      
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> REGISTERING...`;
+
+      // Gather Data
+      const members = [];
+      
+      // Primary Member
+      members.push({
+        name: document.getElementById('name1').value,
+        mobile: document.getElementById('mobile1').value,
+        address: document.getElementById('address1').value,
+        age: document.getElementById('age1').value,
+        type: 'Primary'
+      });
+
+      // Additional Members
+      const extraCards = container.querySelectorAll('.form-card');
+      extraCards.forEach(card => {
+        const inps = card.querySelectorAll('input, textarea');
+        members.push({
+          name: inps[0].value,
+          mobile: inps[1].value,
+          address: inps[2].value,
+          age: inps[3].value,
+          type: 'Additional'
+        });
+      });
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({
+            event: "Maya ki Maya Guru Maa ke Sang",
+            data: members
+          })
+        });
+        
+        alert('Registration Successful! Pranaam.');
+        window.location.reload();
+      } catch (err) {
+        alert('There was an error. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = `CONFIRM REGISTRATION <i class="fa-solid fa-om ml-2"></i>`;
+      }
+    };
+  </script>
+</body>
+</html>
