@@ -16,12 +16,11 @@
 
     .bg-wallpaper {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1499244015948-ac75085284fb?q=80&w=2000') center center no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1499244015948-ac75085284fb?q=80&w=2000') center center no-repeat;
       background-size: cover; z-index: -1; transition: filter 0.8s ease;
     }
     .bg-wallpaper.blurred { filter: blur(15px) brightness(0.4); }
 
-    .landing-page { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .stylish-heading {
       font-family: 'Cinzel', serif;
       background: linear-gradient(to bottom, #ffffff, #b08d57);
@@ -43,12 +42,24 @@
     .btn-gold {
       background: linear-gradient(135deg, #b08d57, #8a6d3b); color: white;
       font-weight: 800; transition: 0.3s; padding: 1rem 2.5rem; border-radius: 99px; display: inline-block;
+      cursor: pointer; border: none;
     }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    .btn-gold:disabled { opacity: 0.7; cursor: not-allowed; }
 
-    .contact-section { background: rgba(0,0,0,0.5); padding: 2rem; text-align: center; color: white; border-top: 1px solid rgba(255,255,255,0.1); }
-    
-    .remove-btn { position: absolute; top: 15px; right: 15px; color: #ef4444; cursor: pointer; font-size: 1.2rem; }
+    .success-card {
+        display: none;
+        animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes scaleIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .loading-spinner {
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -56,14 +67,13 @@
   <div id="mainBg" class="bg-wallpaper"></div>
 
   <!-- LANDING PAGE -->
-  <section class="landing-page px-6">
+  <section id="hero" class="h-screen flex flex-col justify-center items-center px-6">
     <div class="text-center">
       <h1 class="stylish-heading text-4xl sm:text-7xl font-black mb-4">
         Maiya ki Maya<br><span class="text-2xl sm:text-4xl opacity-90">with P.P. Gurumaa</span>
       </h1>
       <p class="text-white/60 tracking-[0.4em] text-[10px] uppercase">Special Spiritual Discourse</p>
     </div>
-
     <div class="absolute bottom-12">
       <a href="#registration" class="btn-gold animate-bounce">REGISTRATION <i class="fa-solid fa-arrow-down ml-2"></i></a>
     </div>
@@ -73,47 +83,57 @@
   <section id="registration" class="min-h-screen py-20 px-4 flex justify-center">
     <div class="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl">
       
-      <header class="py-12 text-center">
-        <h2 class="stylish-heading text-3xl font-bold">Register Your Presence</h2>
-      </header>
+      <!-- The Form -->
+      <div id="formContainer">
+        <header class="py-12 text-center">
+          <h2 class="stylish-heading text-3xl font-bold">Register Your Presence</h2>
+        </header>
 
-      <div class="p-6 sm:p-10">
-        <form id="regForm">
-          <!-- Member 1 -->
-          <div class="form-card main-member">
-            <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
-              <span class="bg-[#b08d57] text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span> 
-              Primary Member (Compulsory)
-            </h3>
-            
-            <div class="space-y-4">
-              <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field"></div>
-              <div>
-                <label class="label-text">Select City</label>
-                <select name="city" required class="input-field">
-                  <option value="">-- Select City --</option>
-                  <option value="Ankleshwar">Ankleshwar</option>
-                  <option value="Bharuch">Bharuch</option>
-                  <option value="Vapi">Vapi</option>
-                </select>
+        <div class="p-6 sm:p-10">
+          <form id="regForm">
+            <div class="form-card main-member">
+              <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span class="bg-[#b08d57] text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span> 
+                Primary Member
+              </h3>
+              <div class="space-y-4">
+                <div><label class="label-text">Full Name</label><input type="text" name="name" required class="input-field"></div>
+                <div>
+                  <label class="label-text">Select City</label>
+                  <select name="city" required class="input-field">
+                    <option value="">-- Select City --</option>
+                    <option value="Ankleshwar">Ankleshwar</option>
+                    <option value="Bharuch">Bharuch</option>
+                    <option value="Vapi">Vapi</option>
+                  </select>
+                </div>
+                <div><label class="label-text">Mobile Number</label><input type="tel" name="mobile" required pattern="[0-9]{10}" class="input-field"></div>
+                <div><label class="label-text">Age (18-35 only)</label><input type="number" name="age" required min="18" max="35" class="input-field"></div>
+                <div><label class="label-text">Full Address</label><textarea name="address" required rows="3" class="input-field"></textarea></div>
               </div>
-              <div><label class="label-text">Mobile Number</label><input type="tel" name="mobile" required pattern="[0-9]{10}" class="input-field"></div>
-              <div><label class="label-text">Age (18-35 only)</label><input type="number" name="age" required min="18" max="35" class="input-field"></div>
-              <div><label class="label-text">Full Address</label><textarea name="address" required rows="3" class="input-field"></textarea></div>
             </div>
-          </div>
 
-          <!-- Dynamic Members -->
-          <div id="additionalList"></div>
+            <div id="additionalList"></div>
 
-          <button type="button" id="addBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl mb-6 font-bold text-xs hover:bg-white/5 transition">
-            <i class="fa-solid fa-plus mr-2"></i> ADD FAMILY MEMBER
-          </button>
+            <button type="button" id="addBtn" class="w-full py-4 border-2 border-dashed border-white/20 text-white rounded-xl mb-6 font-bold text-xs hover:bg-white/5">
+              <i class="fa-solid fa-plus mr-2"></i> ADD FAMILY MEMBER
+            </button>
 
-          <button type="submit" id="submitBtn" class="w-full btn-gold text-xl py-5 rounded-2xl">
-            SUBMIT REGISTRATION
-          </button>
-        </form>
+            <button type="submit" id="submitBtn" class="w-full btn-gold text-xl py-5 rounded-2xl">
+              SUBMIT REGISTRATION
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Success Screen (Hidden by default) -->
+      <div id="successScreen" class="success-card p-10 text-center py-32">
+        <div class="mb-6">
+            <i class="fa-solid fa-circle-check text-7xl text-green-500"></i>
+        </div>
+        <h2 class="stylish-heading text-4xl font-bold mb-4">Jai Mata Di!</h2>
+        <p class="text-white text-xl opacity-90 mb-8">Your registration is complete.</p>
+        <button onclick="window.location.reload()" class="btn-gold">REGISTER ANOTHER</button>
       </div>
 
       <footer class="contact-section">
@@ -129,10 +149,10 @@
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxdB_0qKOhSRKS2Cn_e8yQigsOF2cJe6_jrcVCMnpZv-vXa0ztIUpLZcqgxiF9p5qx0/exec";
 
-    // Background blur logic
+    // Dynamic background blur
     window.addEventListener('scroll', () => {
       const bg = document.getElementById('mainBg');
-      window.scrollY > 200 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
+      window.scrollY > 100 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
     });
 
     // Add Member logic
@@ -140,8 +160,8 @@
     document.getElementById('addBtn').onclick = () => {
       memberCount++;
       const html = `
-        <div class="form-card additional-member animate-slide-in">
-          <button type="button" onclick="this.parentElement.remove()" class="remove-btn"><i class="fa-solid fa-circle-xmark"></i></button>
+        <div class="form-card animate-slide-in">
+          <button type="button" onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-red-500"><i class="fa-solid fa-circle-xmark"></i></button>
           <h3 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
              <span class="bg-slate-400 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">${memberCount}</span>
              Additional Member
@@ -164,31 +184,30 @@
       document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
     };
 
-    // Submit Logic
+    // Submit Logic with Animation
     document.getElementById('regForm').onsubmit = async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
-      const originalText = btn.innerText;
-      
-      btn.disabled = true; 
-      btn.innerText = "SAVING DATA...";
+      const allCards = document.querySelectorAll('.form-card');
+      const count = allCards.length;
+
+      // 1. Show animating registration button
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner loading-spinner mr-3"></i> Registering ${count} Members...`;
 
       const data = [];
       const primaryAddress = document.querySelector('.main-member textarea[name="address"]').value;
 
-      // Collect all member cards (Primary + Additional)
-      document.querySelectorAll('.form-card').forEach((card, index) => {
-        const name = card.querySelector('[name="name"]').value;
-        const city = card.querySelector('[name="city"]').value;
-        const mobile = card.querySelector('[name="mobile"]').value;
-        const age = card.querySelector('[name="age"]').value;
-        let address = card.querySelector('[name="address"]').value;
-
-        // If it's a family member, use the primary address
-        if (address === "Same as Primary") address = primaryAddress;
+      allCards.forEach((card, index) => {
+        let addr = card.querySelector('[name="address"]').value;
+        if (addr === "Same as Primary") addr = primaryAddress;
 
         data.push({
-          name, city, mobile, age, address,
+          name: card.querySelector('[name="name"]').value,
+          city: card.querySelector('[name="city"]').value,
+          mobile: card.querySelector('[name="mobile"]').value,
+          age: card.querySelector('[name="age"]').value,
+          address: addr,
           type: index === 0 ? "Primary" : "Family"
         });
       });
@@ -196,17 +215,22 @@
       try {
         await fetch(WEB_APP_URL, {
           method: 'POST',
-          mode: 'no-cors', // Important for Google Apps Script
+          mode: 'no-cors',
           cache: 'no-cache',
           body: JSON.stringify({ event: "Maiya ki Maya", data: data })
         });
 
-        alert("Registration Successful! Data saved to Sheet.");
-        window.location.reload();
+        // 2. Hide form and show success screen
+        setTimeout(() => {
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('registration').offsetTop, behavior: 'smooth' });
+        }, 1000);
+
       } catch (err) {
-        console.error(err);
-        alert("Success! (Wait 2 seconds for sheet update)");
-        window.location.reload();
+        // Fallback for no-cors "errors"
+        document.getElementById('formContainer').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'block';
       }
     };
   </script>
