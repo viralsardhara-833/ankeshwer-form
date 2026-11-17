@@ -116,12 +116,9 @@
                 <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Full Name"></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="text-[11px] font-black text-slate-400 uppercase">Select City</label>
+                    <label class="text-[11px] font-black text-slate-400 uppercase">Select Country</label>
                     <select name="city" required class="input-field">
-                      <option value="">-- Choose --</option>
-                      <option value="Ankleshwar">Ankleshwar</option>
-                      <option value="Bharuch">Bharuch</option>
-                      <option value="Valia">Valia</option>
+                      <option value="India">India</option>
                     </select>
                   </div>
                   <div>
@@ -130,7 +127,7 @@
                   </div>
                 </div>
                 
-                <!-- Compulsory Age Group Dropdown -->
+                <!-- Age Group Dropdown -->
                 <div>
                   <label class="text-[11px] font-black text-slate-400 uppercase">Select Age Group (Compulsory)</label>
                   <select name="age" required class="input-field">
@@ -169,7 +166,7 @@
         </button>
       </div>
 
-      <!-- FOOTER / UPDATED CONTACT -->
+      <!-- FOOTER -->
       <footer class="bg-black/60 p-10 sm:p-16 border-t border-white/5 text-center">
         <div class="max-w-xs mx-auto">
             <h4 class="text-gold font-black mb-6 tracking-[0.2em] text-sm uppercase">Contact Details</h4>
@@ -210,16 +207,13 @@
           <div class="space-y-5">
             <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Name"></div>
             <div class="grid grid-cols-2 gap-4">
-                <div><label class="text-[11px] font-black text-slate-400 uppercase">City</label>
+                <div><label class="text-[11px] font-black text-slate-400 uppercase">Country</label>
                 <select name="city" required class="input-field">
-                    <option value="Ankleshwar">Ankleshwar</option>
-                    <option value="Bharuch">Bharuch</option>
-                    <option value="Valia">Valia</option>
+                    <option value="India">India</option>
                 </select></div>
                 <div><label class="text-[11px] font-black text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="10 Digits"></div>
             </div>
             
-            <!-- Dynamic Age Dropdown for Member -->
             <div>
               <label class="text-[11px] font-black text-slate-400 uppercase">Select Age Group (Compulsory)</label>
               <select name="age" required class="input-field">
