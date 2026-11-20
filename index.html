@@ -59,6 +59,7 @@
       font-weight: 800; transition: all 0.4s ease; padding: 1.2rem 3rem; border-radius: 99px; 
       display: inline-block; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 2px;
     }
+    .btn-gold:hover { transform: scale(1.05); }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
@@ -140,14 +141,14 @@
       <div id="closedMessage" class="hidden p-20 text-center py-32">
         <i class="fa-solid fa-circle-exclamation text-8xl text-red-500 mb-8"></i>
         <h2 class="stylish-heading text-4xl font-black mb-4 uppercase">Registration Closed</h2>
-        <p class="text-white/70 text-lg">We have reached the limit of 2000 registrations. Thank you for your interest!</p>
+        <p class="text-white/70 text-lg">Thank you! We have reached the 2000 registration limit.</p>
       </div>
 
       <!-- SUCCESS SCREEN -->
-      <div id="successScreen" class="hidden p-12 text-center py-32 animate-fade-in">
+      <div id="successScreen" class="hidden p-12 text-center py-32">
         <i class="fa-solid fa-circle-check text-8xl text-green-500 mb-8"></i>
-        <h2 class="stylish-heading text-5xl font-black mb-6 uppercase tracking-tight">Jai Aatmeshwar</h2>
-        <p class="text-white/70 text-xl mb-10">Registration successful.</p>
+        <h2 class="stylish-heading text-5xl font-black mb-6 uppercase">Jai Aatmeshwar</h2>
+        <p class="text-white/70 text-xl mb-10">Registration complete.</p>
         <button onclick="window.location.reload()" class="bg-white/10 px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest">Register Another</button>
       </div>
 
@@ -159,57 +160,53 @@
   </section>
 
   <script>
-    // USE YOUR NEW DEPLOYED URL HERE
-    const WEB_APP_URL = "PASTE_YOUR_NEW_URL_HERE";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzjKyP_k6soozT-8mr5rWLDUIT9n0NAFplbVSOp0H45Xc0QFjsuAH8RUlP0j-tPuCAz/exec";
 
-    // 1. Check if full on load
     async function checkStatus() {
         try {
-            const response = await fetch(WEB_APP_URL);
-            const result = await response.json();
-            if (result.status === "CLOSED") {
-                document.getElementById('formContainer').innerHTML = ""; // Clear form
+            const resp = await fetch(WEB_APP_URL);
+            const res = await resp.json();
+            if (res.status === "CLOSED") {
+                document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('closedMessage').classList.remove('hidden');
                 document.getElementById('heroBtnArea').innerHTML = "<p class='text-red-500 font-bold'>REGISTRATION FULL</p>";
             }
-        } catch (e) { console.log("Status check failed, continuing..."); }
+        } catch (e) { console.log("Status check bypass"); }
     }
 
-    // 2. Add Member
     document.getElementById('addBtn').onclick = () => {
-      const html = `<div class="form-card shadow-xl animate-fade-in"><button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500"><i class="fa-solid fa-circle-xmark text-2xl"></i></button><h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">Family Member</h3><div class="space-y-5"><div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field"></div><div class="grid grid-cols-2 gap-4"><div><label class="text-[11px] font-black text-slate-400 uppercase">Country</label><select name="city" class="input-field"><option value="India">India</option></select></div><div><label class="text-[11px] font-black text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field"></div></div><div><label class="text-[11px] font-black text-slate-400 uppercase">Age Group</label><select name="age" required class="input-field"><option value="10 to 30 Years">10 to 30 Years</option><option value="Above 30 Years">Above 30 Years</option></select></div><input type="hidden" name="address" value="SAME_AS_PRIMARY"></div></div>`;
+      const html = `<div class="form-card shadow-xl animate-fade-in"><button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500"><i class="fa-solid fa-circle-xmark text-2xl"></i></button><h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">Family Member</h3><div class="space-y-5"><div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field"></div><div class="grid grid-cols-2 gap-4"><div><label class="text-[11px] font-black text-slate-400 uppercase">Country</label><select name="city" class="input-field"><option value="India">India</option></select></div><div><label class="text-[11px] font-black text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field"></div></div><div><label class="text-[11px] font-black text-slate-400 uppercase">Age Group</label><select name="age" required class="input-field"><option value="10 to 30 Years">10 to 30 Years</option><option value="Above 30 Years">Above 30 Years</option></select></div><input type="hidden" name="address" value="SAME"></div></div>`;
       document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
     };
 
-    // 3. Submit Form
     document.getElementById('regForm').onsubmit = async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const allCards = document.querySelectorAll('.form-card');
-      const primaryAddress = document.querySelector('.main-member textarea[name="address"]').value;
+      const primaryAddr = document.querySelector('.main-member textarea[name="address"]').value;
 
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> CONFIRMING...`;
 
       const dataArray = [];
-      allCards.forEach((card, index) => {
-        let addr = card.querySelector('[name="address"]').value;
+      allCards.forEach((card, i) => {
+        let addr = card.querySelector('[name="address"]')?.value;
         dataArray.push({
           name: card.querySelector('[name="name"]').value,
           city: card.querySelector('[name="city"]').value,
           mobile: card.querySelector('[name="mobile"]').value,
           age: card.querySelector('[name="age"]').value,
-          address: addr === "SAME_AS_PRIMARY" ? primaryAddress : addr,
-          type: index === 0 ? "Primary" : "Family Member"
+          address: (addr === "SAME" || !addr) ? primaryAddr : addr,
+          type: i === 0 ? "Primary" : "Family"
         });
       });
 
       try {
-        const resp = await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ data: dataArray }) });
-        document.getElementById('formContainer').classList.add('hidden');
+        await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ data: dataArray }) });
+        document.getElementById('formContainer').style.display = 'none';
         document.getElementById('successScreen').classList.remove('hidden');
       } catch (err) {
-        document.getElementById('formContainer').classList.add('hidden');
+        document.getElementById('formContainer').style.display = 'none';
         document.getElementById('successScreen').classList.remove('hidden');
       }
     };
