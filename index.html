@@ -14,7 +14,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: #000; color: white; overflow-x: hidden; }
 
-    /* Background Setup using background.png */
     .bg-wallpaper {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%), 
@@ -60,18 +59,14 @@
       font-weight: 800; transition: all 0.4s ease; padding: 1.2rem 3rem; border-radius: 99px; 
       display: inline-block; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 2px;
     }
-    .btn-gold:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(176, 141, 87, 0.4); }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
-    .loading-spinner { animation: spin 1s linear infinite; }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   </style>
 </head>
-<body>
+<body onload="checkStatus()">
 
   <div id="mainBg" class="bg-wallpaper"></div>
 
@@ -82,14 +77,10 @@
         Maiya ki Maya<br>
         <span class="text-2xl sm:text-4xl lg:text-5xl opacity-90 block mt-2">with P.P. Gurumaa</span>
       </h1>
-      <p class="text-white/60 tracking-[0.5em] text-[10px] sm:text-xs uppercase font-bold">
-        Special Spiritual Discourse
-      </p>
+      <p class="text-white/60 tracking-[0.5em] text-[10px] sm:text-xs uppercase font-bold">Special Spiritual Discourse</p>
       
-      <div class="mt-12">
-        <a href="#registration" class="btn-gold shadow-2xl">
-          REGISTER NOW <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
-        </a>
+      <div class="mt-12" id="heroBtnArea">
+        <a href="#registration" class="btn-gold shadow-2xl">REGISTER NOW</a>
       </div>
     </div>
   </section>
@@ -98,138 +89,99 @@
   <section id="registration" class="min-h-screen py-24 px-4 flex flex-col items-center">
     <div class="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl">
       
+      <!-- FORM CONTAINER -->
       <div id="formContainer">
         <header class="py-16 text-center">
           <h2 class="stylish-heading text-4xl font-bold">Register Presence</h2>
-          <p class="text-white/40 text-xs mt-2 uppercase tracking-widest">Join the divine gathering</p>
         </header>
 
         <div class="px-6 pb-12 sm:px-12">
           <form id="regForm">
-            <!-- Primary Member -->
             <div class="form-card main-member shadow-lg">
               <h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">
-                <span class="bg-[#b08d57] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg">1</span> 
-                Primary Member
+                <span class="bg-[#b08d57] text-white w-8 h-8 rounded-full flex items-center justify-center">1</span> Primary Member
               </h3>
               <div class="space-y-5">
                 <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Full Name"></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="text-[11px] font-black text-slate-400 uppercase">Select Country</label>
-                    <select name="city" required class="input-field">
-                      <option value="India">India</option>
-                    </select>
+                    <label class="text-[11px] font-black text-slate-400 uppercase">Country</label>
+                    <select name="city" class="input-field"><option value="India">India</option></select>
                   </div>
                   <div>
                     <label class="text-[11px] font-black text-slate-400 uppercase">Mobile (10 Digits)</label>
-                    <input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="10 Digit Number">
+                    <input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field">
                   </div>
                 </div>
-                
-                <!-- Age Group Dropdown -->
                 <div>
-                  <label class="text-[11px] font-black text-slate-400 uppercase">Select Age Group (Compulsory)</label>
+                  <label class="text-[11px] font-black text-slate-400 uppercase">Select Age Group</label>
                   <select name="age" required class="input-field">
                     <option value="">-- Select Age Group --</option>
                     <option value="10 to 30 Years">10 to 30 Years</option>
                     <option value="Above 30 Years">Above 30 Years</option>
                   </select>
                 </div>
-
-                <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Address</label><textarea name="address" required rows="3" class="input-field" placeholder="Complete Address"></textarea></div>
+                <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Address</label><textarea name="address" required rows="3" class="input-field"></textarea></div>
               </div>
             </div>
 
             <div id="additionalList"></div>
 
-            <button type="button" id="addBtn" class="w-full py-5 border-2 border-dashed border-white/10 text-white/60 rounded-2xl mb-8 font-bold text-xs hover:border-gold hover:text-gold transition-all duration-300">
+            <button type="button" id="addBtn" class="w-full py-5 border-2 border-dashed border-white/10 text-white/60 rounded-2xl mb-8 font-bold text-xs hover:border-gold">
               <i class="fa-solid fa-user-plus mr-2"></i> ADD FAMILY MEMBER
             </button>
 
-            <button type="submit" id="submitBtn" class="w-full btn-gold text-xl py-6 rounded-3xl shadow-xl">
-              SUBMIT REGISTRATION
-            </button>
+            <button type="submit" id="submitBtn" class="w-full btn-gold text-xl py-6 rounded-3xl shadow-xl">SUBMIT REGISTRATION</button>
           </form>
         </div>
       </div>
 
-      <!-- SUCCESS SCREEN -->
-      <div id="successScreen" class="hidden p-12 text-center py-32 animate-fade-in">
-        <div class="mb-8 inline-block p-4 bg-green-500/20 rounded-full">
-            <i class="fa-solid fa-circle-check text-8xl text-green-500"></i>
-        </div>
-        <h2 class="stylish-heading text-5xl font-black mb-6 uppercase tracking-tight">Jai Aatmeshwar</h2>
-        <p class="text-white/70 text-xl mb-10 max-w-sm mx-auto">Your registration has been completed successfully. We look forward to seeing you.</p>
-        <button onclick="window.location.reload()" class="bg-white/10 hover:bg-white/20 px-10 py-4 rounded-full transition text-xs font-bold uppercase tracking-widest">
-          Register Another
-        </button>
+      <!-- CLOSED MESSAGE -->
+      <div id="closedMessage" class="hidden p-20 text-center py-32">
+        <i class="fa-solid fa-circle-exclamation text-8xl text-red-500 mb-8"></i>
+        <h2 class="stylish-heading text-4xl font-black mb-4 uppercase">Registration Closed</h2>
+        <p class="text-white/70 text-lg">We have reached the limit of 2000 registrations. Thank you for your interest!</p>
       </div>
 
-      <!-- FOOTER -->
-      <footer class="bg-black/60 p-10 sm:p-16 border-t border-white/5 text-center">
-        <div class="max-w-xs mx-auto">
-            <h4 class="text-gold font-black mb-6 tracking-[0.2em] text-sm uppercase">Contact Details</h4>
-            <div class="space-y-4 opacity-90 text-sm">
-                <a href="tel:+919428026457" class="block hover:text-gold transition">
-                    <i class="fa-solid fa-phone mr-3 text-gold"></i> +91 94280 26457
-                </a>
-            </div>
-            <div class="mt-10 pt-10 border-t border-white/5 opacity-20 text-[9px] uppercase tracking-[0.3em]">
-                &copy; 2024 Maiya Ki Maya
-            </div>
-        </div>
+      <!-- SUCCESS SCREEN -->
+      <div id="successScreen" class="hidden p-12 text-center py-32 animate-fade-in">
+        <i class="fa-solid fa-circle-check text-8xl text-green-500 mb-8"></i>
+        <h2 class="stylish-heading text-5xl font-black mb-6 uppercase tracking-tight">Jai Aatmeshwar</h2>
+        <p class="text-white/70 text-xl mb-10">Registration successful.</p>
+        <button onclick="window.location.reload()" class="bg-white/10 px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest">Register Another</button>
+      </div>
+
+      <footer class="bg-black/60 p-10 text-center border-t border-white/5">
+        <h4 class="text-gold font-black mb-6 tracking-[0.2em] text-sm uppercase">Contact Details</h4>
+        <a href="tel:+919428026457" class="block hover:text-gold transition text-lg"><i class="fa-solid fa-phone mr-3 text-gold"></i> +91 94280 26457</a>
       </footer>
     </div>
   </section>
 
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxdB_0qKOhSRKS2Cn_e8yQigsOF2cJe6_jrcVCMnpZv-vXa0ztIUpLZcqgxiF9p5qx0/exec";
+    // USE YOUR NEW DEPLOYED URL HERE
+    const WEB_APP_URL = "PASTE_YOUR_NEW_URL_HERE";
 
-    window.addEventListener('scroll', () => {
-      const bg = document.getElementById('mainBg');
-      window.scrollY > 150 ? bg.classList.add('blurred') : bg.classList.remove('blurred');
-    });
+    // 1. Check if full on load
+    async function checkStatus() {
+        try {
+            const response = await fetch(WEB_APP_URL);
+            const result = await response.json();
+            if (result.status === "CLOSED") {
+                document.getElementById('formContainer').innerHTML = ""; // Clear form
+                document.getElementById('closedMessage').classList.remove('hidden');
+                document.getElementById('heroBtnArea').innerHTML = "<p class='text-red-500 font-bold'>REGISTRATION FULL</p>";
+            }
+        } catch (e) { console.log("Status check failed, continuing..."); }
+    }
 
-    // Add Family Member Logic
-    let count = 1;
+    // 2. Add Member
     document.getElementById('addBtn').onclick = () => {
-      count++;
-      const html = `
-        <div class="form-card shadow-xl animate-fade-in">
-          <button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500 transition">
-            <i class="fa-solid fa-circle-xmark text-2xl"></i>
-          </button>
-          <h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">
-             <span class="bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center">${count}</span>
-             Family Member
-          </h3>
-          <div class="space-y-5">
-            <div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field" placeholder="Name"></div>
-            <div class="grid grid-cols-2 gap-4">
-                <div><label class="text-[11px] font-black text-slate-400 uppercase">Country</label>
-                <select name="city" required class="input-field">
-                    <option value="India">India</option>
-                </select></div>
-                <div><label class="text-[11px] font-black text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field" placeholder="10 Digits"></div>
-            </div>
-            
-            <div>
-              <label class="text-[11px] font-black text-slate-400 uppercase">Select Age Group (Compulsory)</label>
-              <select name="age" required class="input-field">
-                <option value="">-- Select Age Group --</option>
-                <option value="10 to 30 Years">10 to 30 Years</option>
-                <option value="Above 30 Years">Above 30 Years</option>
-              </select>
-            </div>
-
-            <input type="hidden" name="address" value="SAME_AS_PRIMARY">
-          </div>
-        </div>`;
+      const html = `<div class="form-card shadow-xl animate-fade-in"><button type="button" onclick="this.parentElement.remove()" class="absolute top-6 right-6 text-slate-300 hover:text-red-500"><i class="fa-solid fa-circle-xmark text-2xl"></i></button><h3 class="font-bold text-slate-800 mb-8 flex items-center gap-3 text-lg">Family Member</h3><div class="space-y-5"><div><label class="text-[11px] font-black text-slate-400 uppercase">Full Name</label><input type="text" name="name" required class="input-field"></div><div class="grid grid-cols-2 gap-4"><div><label class="text-[11px] font-black text-slate-400 uppercase">Country</label><select name="city" class="input-field"><option value="India">India</option></select></div><div><label class="text-[11px] font-black text-slate-400 uppercase">Mobile</label><input type="tel" name="mobile" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="input-field"></div></div><div><label class="text-[11px] font-black text-slate-400 uppercase">Age Group</label><select name="age" required class="input-field"><option value="10 to 30 Years">10 to 30 Years</option><option value="Above 30 Years">Above 30 Years</option></select></div><input type="hidden" name="address" value="SAME_AS_PRIMARY"></div></div>`;
       document.getElementById('additionalList').insertAdjacentHTML('beforeend', html);
     };
 
-    // Submit Form
+    // 3. Submit Form
     document.getElementById('regForm').onsubmit = async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
@@ -237,7 +189,7 @@
       const primaryAddress = document.querySelector('.main-member textarea[name="address"]').value;
 
       btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> CONFIRMING ${allCards.length} SEATS...`;
+      btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> CONFIRMING...`;
 
       const dataArray = [];
       allCards.forEach((card, index) => {
@@ -253,17 +205,9 @@
       });
 
       try {
-        await fetch(WEB_APP_URL, { 
-            method: 'POST', 
-            mode: 'no-cors', 
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ data: dataArray }) 
-        });
-        
+        const resp = await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ data: dataArray }) });
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
-        window.scrollTo({ top: document.getElementById('registration').offsetTop - 50, behavior: 'smooth' });
-        
       } catch (err) {
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successScreen').classList.remove('hidden');
